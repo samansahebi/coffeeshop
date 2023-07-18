@@ -650,6 +650,10 @@ video {
   height: 100%;
 }
 
+.h-24 {
+  height: 6rem;
+}
+
 .w-full {
   width: 100%;
 }
@@ -668,6 +672,10 @@ video {
 
 .w-48 {
   width: 12rem;
+}
+
+.w-24 {
+  width: 6rem;
 }
 
 .flex-row-reverse {
