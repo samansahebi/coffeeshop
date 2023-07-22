@@ -57,7 +57,7 @@ export default function Layout() {
     return (
         <div className='fixed h-screen w-screen bg-gray-100'>
             <div className='flex justify-between w-screen px-4 py-4'>
-                <input className='bg-gray-200 p-2 rounded w-full text-right shadow-md' placeholder='جستجوی محصولات'/>
+                <input className='bg-gray-200 p-2 rounded w-full text-right outline-none' placeholder='جستجوی محصولات'/>
             </div>
             <div className='flex w-full px-4'>
                 <Swiper
@@ -73,18 +73,18 @@ export default function Layout() {
                     onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide className={""}>
-                        <div className='w-full h-60 overflow-hidden rounded'>
+                        <div className='w-full h-60 overflow-hidden rounded-md'>
 
                             <img alt={'slide'} src={slide} className='object-cover'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-auto rounded'>
+                        <div className='w-full h-60 overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide2} className='object-contain'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-auto rounded'>
+                        <div className='w-full h-60 overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide3} className='object-contain'/>
                         </div>
                     </SwiperSlide>
@@ -96,7 +96,7 @@ export default function Layout() {
                 <div className='text-black py-4'>
                     دسته بندی ها
                 </div>
-                <div className='grid w-full h-48 grid-cols-2 gap-2 p-2'>
+                <div className='grid w-full h-48 grid-cols-2 gap-2 px-4'>
                     <div className='flex w-full h-full bg-gray-800 rounded'>
 
                     </div>
