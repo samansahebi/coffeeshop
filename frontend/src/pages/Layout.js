@@ -1,14 +1,9 @@
-// import { HiMenu } from "react-icons/hi";
-import {HiHome} from "react-icons/hi";
-import {FaShop} from "react-icons/fa6";
-import {FaBagShopping} from "react-icons/fa6";
-// import { FaUserLarge } from "react-icons/fa6";
-import {FaNewspaper} from "react-icons/fa6";
+import { HiMenu } from "react-icons/hi";
+
+import { FaUser } from "react-icons/fa6";
 import slide from '../assets/mike-kenneally-TD4DBagg2wE-unsplash.jpg'
 import slide2 from '../assets/nathan-dumlao-Y3AqmbmtLQI-unsplash.jpg'
 import slide3 from '../assets/nathan-dumlao-pMW4jzELQCw-unsplash.jpg'
-import {BottomNavigation} from 'reactjs-bottom-navigation'
-import 'reactjs-bottom-navigation'
 // import Home from './Home'
 // import Shop from './Shop'
 import {Swiper, SwiperSlide} from 'swiper/react';
@@ -18,48 +13,26 @@ import 'swiper/css';
 
 export default function Layout() {
 
-    const bottomNavItems = [
-
-        {
-            title: 'وبلاگ',
-
-            icon: <FaNewspaper size={25} color={'black'}/>,
-
-            activeIcon: <FaNewspaper size={25} color={'red'}/>,
-
-            // onClick: () => alert('menu clicked')
-        },
-        {
-            title: 'سبد خرید',
-
-            icon: <FaBagShopping size={25} color={'black'}/>,
-
-            activeIcon: <FaBagShopping size={25} color={'red'}/>
-        },
-
-        {
-            title: 'فروشگاه',
-
-            icon: <FaShop size={25} color={'black'}/>,
-
-            activeIcon: <FaShop size={25} color={'red'}/>
-        },
-
-        {
-            title: 'خانه',
-
-            icon: <HiHome size={25} color={'black'}/>,
-
-            activeIcon: <HiHome size={25} color={'red'}/>
-        },
-    ]
-
     return (
         <div className='fixed h-screen w-screen bg-gray-100'>
-            <div className='flex justify-between w-screen px-4 py-4'>
+            <div className="flex justify-between w-full p-2 shadow-md">
+              <div>
+                <HiMenu size={25}/>
+              </div>
+              <div className="flex ">
+                <div className="font-bold pr-4">
+                  سامان صاحبی                
+                </div>
+                <div>
+                  <FaUser size={25}/>
+                </div>
+
+              </div>
+            </div>
+            <div className='flex justify-between w-screen p-2 pt-3'>
                 <input className='bg-gray-200 p-2 rounded w-full text-right outline-none' placeholder='جستجوی محصولات'/>
             </div>
-            <div className='flex w-full px-4'>
+            <div className='flex w-full px-2'>
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={1}
@@ -73,18 +46,18 @@ export default function Layout() {
                     onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide className={""}>
-                        <div className='w-full h-60 overflow-hidden rounded-md'>
+                        <div className='w-full h-40 overflow-hidden rounded-md'>
 
                             <img alt={'slide'} src={slide} className='object-cover'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-60 overflow-hidden rounded-md'>
+                        <div className='w-full h-40 overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide2} className='object-contain'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-60 overflow-hidden rounded-md'>
+                        <div className='w-full h-40 overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide3} className='object-contain'/>
                         </div>
                     </SwiperSlide>
@@ -93,20 +66,20 @@ export default function Layout() {
             </div>
             <div className='flex flex-col h-full items-center'>
 
-                <div className='text-black py-4'>
-                    دسته بندی ها
+                <div className='w-full text-center font-bold py-4'>
+                    دسته بندی محصولات
                 </div>
-                <div className='grid w-full h-48 grid-cols-2 gap-2 px-4'>
-                    <div className='flex w-full h-full bg-gray-800 rounded'>
+                <div className='grid w-full h-48 grid-cols-2 gap-2 px-2'>
+                    <div className='flex w-full h-full bg-gray-200 rounded'>
 
                     </div>
-                    <div className='flex w-full h-full bg-gray-800 rounded'>
+                    <div className='flex w-full h-full bg-gray-200 rounded'>
 
                     </div>
-                    <div className='flex w-full h-full bg-gray-800 rounded'>
+                    <div className='flex w-full h-full bg-gray-200 rounded'>
 
                     </div>
-                    <div className='flex w-full h-full bg-gray-800 rounded'>
+                    <div className='flex w-full h-full bg-gray-200 rounded'>
 
                     </div>
 
@@ -114,11 +87,7 @@ export default function Layout() {
 
             </div>
                             <div className="rounded p-2">
-                    <BottomNavigation
-                        items={bottomNavItems}
-                        defaultSelectedTab={0}
-                        onItemClick={(item) => console.log(item)}
-                    />
+
                 </div>
         </div>
     )
