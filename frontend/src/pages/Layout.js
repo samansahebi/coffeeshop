@@ -15,7 +15,7 @@ export default function Layout() {
 
     return (
         <div className='fixed h-screen w-screen bg-gray-100'>
-            <div className="flex justify-between w-full p-2 shadow-md">
+            <div className="flex justify-between w-full p-4 shadow-md">
               <div>
                 <HiMenu size={25}/>
               </div>
