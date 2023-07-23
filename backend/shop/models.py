@@ -7,7 +7,6 @@ class Provider(models.Model):
     address = models.CharField(max_length=50)
 
 
-
 class Category(models.Model):
     name = models.CharField(max_length=50)
     slug = models.SlugField()

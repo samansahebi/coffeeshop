@@ -14,14 +14,14 @@ import 'swiper/css';
 export default function Layout() {
 
     return (
-        <div className='fixed h-screen w-screen bg-gray-100'>
+        <div className='fixed h-screen w-screen '>
             <div className="flex justify-between w-full p-4 shadow-md">
               <div>
                 <HiMenu size={25}/>
               </div>
               <div className="flex ">
                 <div className="font-bold pr-4">
-                  سامان صاحبی                
+  سامان صاحبی
                 </div>
                 <div>
                   <FaUser size={25}/>
