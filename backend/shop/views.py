@@ -1,3 +1,16 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
 
-# Create your views here.
+
+class CreateProvider(APIView):
+    def post(self, request):
+        pass
+
+
+class CreateCategory(APIView):
+    def post(self, request):
+        pass
+
+
+class CreateProduct(APIView):
+    def post(self, request):
+        pass
