@@ -13,6 +13,7 @@ import {FaUser} from "react-icons/fa6";
 import { useNavigate } from 'react-router-dom';
 import Checkout from "./pages/Checkout";
 import Profile from "./pages/Profile";
+import Product from "./pages/Product";
 
 function App() {
   const navigate = useNavigate();
@@ -41,6 +42,7 @@ function App() {
                 <Route exact path="shop" element={<Shop/>} />
                 <Route exact path="checkout" element={<Checkout/>} />
                 <Route exact path="profile" element={<Profile/>} />
+                <Route exact path="product" element={<Product/>} />
             </Routes>
           </div>
 

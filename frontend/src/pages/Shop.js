@@ -1,5 +1,5 @@
 import { FaFilter } from "react-icons/fa6";
-import Product from "../components/Product";
+import ProductCard from "../components/ProductCard";
 
 export default function Shop() {
     return(
@@ -11,12 +11,12 @@ export default function Shop() {
                 </div>
             </div>
         <div className="p-2 mt-14">
-            <Product title={'عنوان محصول'}/>
-            <Product title={'عنوان محصول'}/>
-            <Product title={'عنوان محصول'}/>
-            <Product title={'عنوان محصول'}/>
-            <Product title={'عنوان محصول'}/>
-            <Product title={'عنوان محصول'}/>
+            <ProductCard title={'عنوان محصول'}/>
+            <ProductCard title={'عنوان محصول'}/>
+            <ProductCard title={'عنوان محصول'}/>
+            <ProductCard title={'عنوان محصول'}/>
+            <ProductCard title={'عنوان محصول'}/>
+            <ProductCard title={'عنوان محصول'}/>
         </div>
         </div>
     )

@@ -1,6 +1,9 @@
 import {HiMenu} from "react-icons/hi";
 
-import {FaUser} from "react-icons/fa6";
+import {FaHeadset} from "react-icons/fa6";
+import {FaTruckFast} from "react-icons/fa6";
+import {FaAward} from "react-icons/fa6";
+import {FaCreditCard} from "react-icons/fa6";
 import {FaMagnifyingGlass} from "react-icons/fa6";
 import slide from '../assets/mike-kenneally-TD4DBagg2wE-unsplash.jpg'
 import slide2 from '../assets/nathan-dumlao-Y3AqmbmtLQI-unsplash.jpg'
@@ -57,17 +60,29 @@ export default function Layout() {
 
 
                 <div className='flex w-full h-28 gap-2 text-[#7B7B7B]'>
-                    <div className='flex w-full h-full font-bold justify-center items-center bg-[#24262D] rounded'>
-                        قهوه
+                    <div className='flex flex-col w-full h-full text-center items-center bg-[#24262D] rounded'>
+                        <div className={'py-4'}>
+                            <FaHeadset size={30} color={'white'}/>
+                        </div>
+                        پشتیبانی عالی
                     </div>
-                    <div className='flex w-full h-full font-bold justify-center items-center bg-[#24262D] rounded'>
-                        سیروپ
+                    <div className='flex flex-col w-full h-full  text-center items-center bg-[#24262D] rounded'>
+                        <div className={'py-4'}>
+                            <FaTruckFast size={30} color={'white'}/>
+                        </div>
+                        تحویل سریع
                     </div>
-                    <div className='flex w-full h-full font-bold justify-center items-center bg-[#24262D] rounded'>
-                        قهوه ساز
+                    <div className='flex flex-col w-full h-full text-center  items-center bg-[#24262D] rounded'>
+                        <div className={'py-4'}>
+                            <FaAward size={30} color={'white'}/>
+                        </div>
+                        اصالت کالا
                     </div>
-                    <div className='flex w-full h-full font-bold justify-center items-center bg-[#24262D] rounded'>
-                        مواد شوینده
+                    <div className='flex flex-col w-full h-full text-center  items-center bg-[#24262D] rounded'>
+                        <div className={'py-4'}>
+                            <FaCreditCard size={30} color={'white'}/>
+                        </div>
+                        تضمین قیمت
                     </div>
 
                 </div>

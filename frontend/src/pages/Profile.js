@@ -1,18 +1,17 @@
 import {FaPhoneFlip} from "react-icons/fa6";
+import {FaFileLines} from "react-icons/fa6";
+import {FaPenToSquare} from "react-icons/fa6";
+import {FaArrowRightFromBracket} from "react-icons/fa6";
+import ProfileItems from "../components/ProfileItems";
+
 
 export default function Profile() {
     return(
         <div className='fixed h-screen w-screen bg-[#111416]'>
-            <div className='flex flex-col'>
-                <div className='flex flex-row-reverse gap-3 text-2xl items-center h-24 border-b border-[#7B7B7B]'>
-                    <div className='mr-6'>
-                        <FaPhoneFlip size={25} color={'7B7B7B'}/>
-                    </div>
-                    <div className='text-[#7B7B7B]'>
-                        تماس با ما
-                    </div>
-                </div>
-            </div>
+            <ProfileItems title={'تماس با ما'} icon={<FaPhoneFlip size={20} color={'7B7B7B'}/>}/>
+            <ProfileItems title={'سفارشات من'} icon={<FaFileLines size={20} color={'7B7B7B'}/>}/>
+            <ProfileItems title={'ویرایش مشخصات'} icon={<FaPenToSquare size={20} color={'7B7B7B'}/>}/>
+            <ProfileItems title={'خروج از حساب کاربری'} icon={<FaArrowRightFromBracket size={20} color={'7B7B7B'}/>}/>
         </div>
     )
 }
