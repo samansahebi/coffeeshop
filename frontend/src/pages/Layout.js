@@ -18,15 +18,17 @@ import 'swiper/css';
 export default function Layout() {
 
     return (
-        <div className='fixed h-screen w-screen bg-[#111416] p-2'>
-            <div className='flex justify-between items-center  w-full text-[#7B7B7B] bg-[#24262D] rounded mb-2'>
-                <div className="pl-2">
-                    <FaMagnifyingGlass/>
-                </div>
-                <input className='bg-[#24262D] p-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='جستجوی محصولات'/>
+        <div className='fixed h-screen w-screen bg-[#111416] overflow-scroll'>
+            <div className='fixed top-0 flex w-full justify-center bg-[#111416] border-b border-[#7B7B7B] shadow-md z-50 p-2'>
+                <div className='flex w-full justify-between items-center text-[#7B7B7B] bg-[#24262D] rounded'>
+                    <div className="pl-2">
+                        <FaMagnifyingGlass/>
+                    </div>
+                    <input className='bg-[#24262D] p-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='جستجوی محصولات'/>
 
+                </div>
             </div>
-            <div className='flex w-full mb-2'>
+            <div className='flex w-full mb-2 mt-16 p-2'>
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={1}
@@ -40,25 +42,25 @@ export default function Layout() {
                     onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide>
-                        <div className='w-full h-40 overflow-hidden rounded-md'>
+                        <div className='w-full h-full overflow-hidden rounded-md'>
 
                             <img alt={'slide'} src={slide} className='object-cover'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-40 overflow-hidden rounded-md'>
+                        <div className='w-full h-full overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide2} className='object-contain'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-40 overflow-hidden rounded-md'>
+                        <div className='w-full h-full overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide3} className='object-contain'/>
                         </div>
                     </SwiperSlide>
 
                 </Swiper>
             </div>
-            <div className='flex flex-col h-full items-center'>
+            <div className='flex flex-col h-full items-center p-2'>
 
 
                 <div className='flex w-full h-28 gap-2 text-[#7B7B7B]'>

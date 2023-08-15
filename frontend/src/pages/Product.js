@@ -5,8 +5,8 @@ import slide3 from '../assets/nathan-dumlao-pMW4jzELQCw-unsplash.jpg'
 export default function Product() {
     return (
         <div className={'fixed h-screen w-screen bg-[#111416]'}>
-            <div className="h-1/2 w-full rounded-b-lg bg-[#24262D]">
-                <div className="flex items-end h-5/6 w-full bg-white rounded-b-lg">
+            <div className="h-1/2 w-full rounded-b-lg bg-[#24262D] border-b border-[#7B7B7B]">
+                <div className="flex items-end h-5/6 w-full bg-white rounded-b-lg shadow-md">
                     <img alt={'slide'} src={slide} className=' rounded-b-lg'/>
                 </div>
                 <div className="flex  justify-center text-center text-2xl font-bold text-white py-2">
