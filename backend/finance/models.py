@@ -3,11 +3,13 @@ from ..shop.models import Products
 from ..customers.models import Customer
 
 
-class Bill(models.Model):
+class Order(models.Model):
     product = models.ForeignKey(Products, on_delete=models.PROTECT)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
+    transfered_by = models.ForeignKey(Customer, on_delete=models.PROTECT, blank=True, null=True)
     count = models.IntegerField()
-    is_paid = models.BooleanField(default=False)
-    date = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=30)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_updated = models.DateTimeField(auto_now=True)
 
 

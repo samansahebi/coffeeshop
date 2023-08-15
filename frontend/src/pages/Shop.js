@@ -7,10 +7,10 @@ export default function Shop() {
             <div className='fixed w-full top-0 flex justify-between p-4 bg-[#111416] border-b border-[#7B7B7B] shadow-md z-50'>
                 <FaFilter size={25} color={'7B7B7B'}/>
                 <div className={'font-bold text-[#7B7B7B]'}>
-                    محصولات
+                   فروشگاه 
                 </div>
             </div>
-        <div className="p-2 mt-14">
+        <div className="mt-14">
             <ProductCard title={'عنوان محصول'}/>
             <ProductCard title={'عنوان محصول'}/>
             <ProductCard title={'عنوان محصول'}/>

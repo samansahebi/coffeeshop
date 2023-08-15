@@ -19,8 +19,10 @@ export default function Layout() {
 
     return (
         <div className='fixed h-screen w-screen bg-[#111416] p-2'>
-            <div className='flex justify-between items-center  w-screen text-[#7B7B7B] bg-[#24262D] rounded mb-2'>
-                <FaMagnifyingGlass/>
+            <div className='flex justify-between items-center  w-full text-[#7B7B7B] bg-[#24262D] rounded mb-2'>
+                <div className="pl-2">
+                    <FaMagnifyingGlass/>
+                </div>
                 <input className='bg-[#24262D] p-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='جستجوی محصولات'/>
 
             </div>
@@ -86,12 +88,12 @@ export default function Layout() {
                     </div>
 
                 </div>
-                <div className='w-full text-center text-2xl font-bold py-4 text-[#7B7B7B]'>
+                <div className='w-full text-center text-2xl font-bold py-4 text-white'>
                     دسته بندی محصولات
                 </div>
                 <div className='grid grid-cols-2 gap-2 w-full'>
                     <div className='h-52 w-full bg-[#24262D] rounded-md overflow-hidden'>
-                        <div className='text-center py-3 text-[#7B7B7B]'>
+                        <div className='text-center py-2 text-white'>
                             عنوان
                         </div>
                         <div className='w-full h-full bg-white rounded'>
@@ -99,7 +101,7 @@ export default function Layout() {
                         </div>
                     </div>
                     <div className='h-52 w-full bg-[#24262D] rounded-md overflow-hidden'>
-                        <div className='text-center py-3 text-[#7B7B7B]'>
+                        <div className='text-center py-2 text-white'>
                             عنوان
                         </div>
                         <div className='w-full h-full bg-white rounded'>
@@ -107,7 +109,7 @@ export default function Layout() {
                         </div>
                     </div>
                     <div className='h-52 w-full bg-[#24262D] rounded-md overflow-hidden'>
-                        <div className='text-center py-3 text-[#7B7B7B]'>
+                        <div className='text-center py-2 text-white'>
                             عنوان
                         </div>
                         <div className='w-full h-full bg-white rounded'>
@@ -115,7 +117,7 @@ export default function Layout() {
                         </div>
                     </div>
                     <div className='h-52 w-full bg-[#24262D] rounded-md overflow-hidden'>
-                        <div className='text-center py-3 text-[#7B7B7B]'>
+                        <div className='text-center py-2 text-white'>
                             عنوان
                         </div>
                         <div className='w-full h-full bg-white rounded'>
