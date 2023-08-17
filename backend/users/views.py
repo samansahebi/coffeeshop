@@ -11,7 +11,7 @@ class Refresh(APIView):
         pass
 
 
-class Refresh(APIView):
+class SendOTP(APIView):
     def post(self, request):
         pass
 

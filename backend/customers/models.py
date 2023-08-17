@@ -1,14 +1,30 @@
 from django.db import models
 
 
-class Address(models.Model):
-    city = models.CharField(max_length=50)
+class Province(models.Model):
+    title = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.title
+
+
+class City(models.Model):
+    title = models.CharField(max_length=50)
     province = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.title
+
+
+class Address(models.Model):
+    title = models.CharField(max_length=50)
+    city = models.ForeignKey(City, on_delete=models.PROTECT)
+    province = models.ForeignKey(Province, on_delete=models.PROTECT)
     address = models.CharField(max_length=255)
     postal_code = models.CharField(max_length=50)
 
     def __str__(self):
-        return self.city
+        return self.title
 
 
 class Customer(models.Model):

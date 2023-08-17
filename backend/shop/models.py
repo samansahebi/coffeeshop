@@ -8,18 +8,26 @@ class Provider(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(max_length=50)
+    title = models.CharField(max_length=50)
     slug = models.SlugField()
     image = models.ImageField()
 
 
-class Products(models.Model):
-    category = models.CharField(max_length=50)
-    provider = models.CharField(max_length=50)
-    name = models.CharField(max_length=50)
+class ProductUnit(models.Model):
+    title = models.CharField(max_length=200)
+    price_per_unit = models.CharField(max_length=200)
+
+    def __str__(self):
+        return self.title
+
+
+class Product(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.PROTECT)
+    provider = models.ForeignKey(Provider, on_delete=models.PROTECT)
+    title = models.CharField(max_length=50)
     image = models.ImageField()
-    unit = models.CharField(max_length=20)
+    slug = models.SlugField()
+    unit = models.ForeignKey(ProductUnit, on_delete=models.PROTECT)
     quantity = models.CharField(max_length=200)
-    unit_price = models.CharField()
 
 

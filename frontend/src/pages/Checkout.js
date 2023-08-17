@@ -1,14 +1,11 @@
 import CheckoutItem from "../components/CheckoutItem";
 
 export default function Checkout() {
-    return(
-        <div  className='fixed h-screen w-screen bg-[#111416]'>
+    return (
+        <div className='fixed h-screen w-screen bg-[#111416]'>
             <CheckoutItem title={'عنوان'}/>
-
-
-
-
-            <div className='fixed flex justify-between bottom-0 w-full h-28 border-t border-[#7B7B7B] rounded-t-lg bg-[#33363F]'>
+            <div
+                className='fixed flex justify-between bottom-0 w-full h-28 border-t border-[#7B7B7B] rounded-t-lg bg-[#33363F]'>
                 <div className='flex w-28 h-10 bg-[#1CEA87] rounded-md m-2 items-center justify-center font-black'>
                     ادامه خرید
                 </div>
@@ -19,7 +16,6 @@ export default function Checkout() {
                     <div>
                         20000
                     </div>
-
                 </div>
             </div>
         </div>

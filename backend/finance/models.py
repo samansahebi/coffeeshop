@@ -1,22 +1,18 @@
 from django.db import models
-from ..shop.models import Products
+from ..shop.models import Product, ProductUnit
 from ..customers.models import Customer, Address
 
 
-class ProductUnit(models.Model):
-    name = models.CharField(max_length=200)
-
-
-class Items(models.Model):
-    product = models.ForeignKey(Products, on_delete=models.PROTECT)
+class OrderItem(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
     unit = models.ForeignKey(ProductUnit, on_delete=models.PROTECT)
     count = models.IntegerField()
     status = models.CharField(max_length=20)
     description = models.CharField(max_length=200)
 
 
-class Orders(models.Model):
-    items = models.ManyToManyField(Items)
+class Order(models.Model):
+    items = models.ManyToManyField(OrderItem)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
     address = models.ForeignKey(Address, on_delete=models.PROTECT)
     status = models.CharField(max_length=30)
@@ -30,7 +26,7 @@ class Transfer(models.Model):
     last_name = models.CharField(max_length=200)
     phone_number = models.CharField(max_length=200)
     vehicle = models.CharField(max_length=200)
-    order = models.ForeignKey(Orders, on_delete=models.PROTECT)
+    order = models.ForeignKey(Order, on_delete=models.PROTECT)
     price = models.CharField(max_length=200)
     status = models.CharField(max_length=200)
 
