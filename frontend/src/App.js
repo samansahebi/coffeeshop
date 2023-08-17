@@ -16,6 +16,8 @@ import Profile from "./pages/Profile";
 import Product from "./pages/Product";
 import Info from "./pages/Info";
 import ContactUs from "./pages/ContactUs";
+import Orders from "./pages/Orders";
+import Login from "./pages/Login";
 
 function App() {
   const navigate = useNavigate();
@@ -40,11 +42,13 @@ function App() {
             </div>
             <Routes>
                 <Route exact path="/" element={<Layout/>} />
+                <Route exact path="login" element={<Login/>} />
                 <Route exact path="home" element={<Home/>} />
                 <Route exact path="shop" element={<Shop/>} />
                 <Route exact path="checkout" element={<Checkout/>} />
                 <Route exact path="profile" element={<Profile/>} />
                 <Route exact path="profile/info" element={<Info/>} />
+                <Route exact path="profile/myorders" element={<Orders/>} />
                 <Route exact path="profile/contact-us" element={<ContactUs/>} />
                 <Route exact path="shop/product" element={<Product/>} />
             </Routes>

@@ -1,10 +1,9 @@
 import coffee from '../assets/coffee.jpg'
 import { useNavigate } from 'react-router-dom';
 import Modal from "./Modal";
-import BTNAddToCard from './BTNAddToCard';
 
 
-export default function ProductCard({title}) {
+export default function CheckoutItem({title}) {
       const navigate = useNavigate();
 
     return (
@@ -23,7 +22,6 @@ export default function ProductCard({title}) {
                     <div className='pr-2'>تومان</div>
                     <div>270000</div>
                 </div>
-                <Modal/>
                 </div>
             </div>
         </div>

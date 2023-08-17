@@ -1,8 +1,9 @@
-import ProductCard from "../components/ProductCard";
+import CheckoutItem from "../components/CheckoutItem";
+
 export default function Checkout() {
     return(
         <div  className='fixed h-screen w-screen bg-[#111416]'>
-            <ProductCard title={'عنوان'}/>
+            <CheckoutItem title={'عنوان'}/>
 
 
 

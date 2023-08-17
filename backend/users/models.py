@@ -6,34 +6,34 @@ from django.core.validators import RegexValidator
 
 
 class UserManager(BaseUserManager):
-    def create_user(self, email, password=None):
+    def create_user(self, phone_number, password=None):
 
-        if not email:
-            raise ValueError('Users must have an email address')
+        if not phone_number:
+            raise ValueError('Users must have an phone number')
 
         if not password:
-            raise ValueError('Users must have an email password')
+            raise ValueError('Users must have an password')
 
         user = self.model(
-            email=self.normalize_email(email),
+            phone_number=phone_number,
         )
 
         user.set_password(password)
         user.save(using=self._db)
         return user
 
-    def create_staffuser(self, email, password):
+    def create_staffuser(self, phone_number, password):
         user = self.create_user(
-            email,
+            phone_number,
             password=password,
         )
         user.staff = True
         user.save(using=self._db)
         return user
 
-    def create_superuser(self, email, password):
+    def create_superuser(self, phone_number, password):
         user = self.create_user(
-            email,
+            phone_number,
             password=password,
         )
         user.staff = True
@@ -44,8 +44,8 @@ class UserManager(BaseUserManager):
 
 
 class User(AbstractBaseUser):
-    email = models.EmailField(
-        verbose_name='email address',
+    phone_number = models.CharField(
+        verbose_name='phone number',
         max_length=255,
         unique=True,
     )
@@ -53,13 +53,13 @@ class User(AbstractBaseUser):
     staff = models.BooleanField(default=False)
     admin = models.BooleanField(default=False)
 
-    USERNAME_FIELD = 'email'
+    USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = []
 
     objects = UserManager()
 
     def __str__(self):
-        return self.email
+        return self.phone_number
 
     def has_perm(self, perm, obj=None):
         return True
