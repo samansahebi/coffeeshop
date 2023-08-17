@@ -36,11 +36,14 @@ export default function ModalAddress() {
                 <select className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
                 <option name="province">دسته بندی</option>
                 </select>
-                <select className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
-                <option name="province">شهر</option>
-                </select>
-                <input type="textarea" className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='آدرس'/>
-                <input className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='کدپستی'/>
+                <div className="text-white text-right p-2">
+                  محدوده قیمت
+                </div>
+                <div className="flex gap-2">
+
+                <input type="textarea" className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='تا'/>
+                <input className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='از'/>
+                </div>
                 </div>
                 {/*footer*/}
                 <div className="flex flex-row-reverse items-center justify-end p-2 border-t border-solid border-slate-200 rounded-b">
@@ -56,7 +59,7 @@ export default function ModalAddress() {
                     type="button"
                     onClick={() => setShowModal(false)}
                   >
-                    افزودن آدرس
+                    اعمال فیلتر
                   </button>
                 </div>
               </div>

@@ -3,5 +3,7 @@ from .views import CreateCustomer
 
 
 urlpatterns = [
-    path('create', CreateCustomer.as_view()),
+    path('login', CreateCustomer.as_view()),
+    path('refresh', CreateCustomer.as_view()),
+    path('', CreateCustomer.as_view()),
 ]

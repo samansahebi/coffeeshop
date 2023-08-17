@@ -32,10 +32,13 @@ export default function Modal() {
                   </button>
                 </div>
                 {/*body*/}
-                <div className="relative p-6 flex-auto">
-                  <p className="my-4 text-[#7B7B7B] text-lg leading-relaxed">
-                    I always felt like I could do anything.
-                  </p>
+                <div className="relative p-2 flex-auto">
+                <select className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
+                <option name="province">حجم بسته بندی</option>
+                </select>
+
+                <input type="textarea" className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='تعداد'/>
+
                 </div>
                 {/*footer*/}
                 <div className="flex flex-row-reverse items-center justify-end p-2 border-t border-solid border-slate-200 rounded-b">

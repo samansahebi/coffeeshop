@@ -15,15 +15,15 @@ class Items(models.Model):
     description = models.CharField(max_length=200)
 
 
-
-
 class Orders(models.Model):
     items = models.ManyToManyField(Items)
     customer = models.ForeignKey(Customer, on_delete=models.PROTECT)
     address = models.ForeignKey(Address, on_delete=models.PROTECT)
     status = models.CharField(max_length=30)
+    total_price = models.CharField(max_length=30)
     date_created = models.DateTimeField(auto_now_add=True)
     date_updated = models.DateTimeField(auto_now=True)
+
 
 class Transfer(models.Model):
     first_name = models.CharField(max_length=200)

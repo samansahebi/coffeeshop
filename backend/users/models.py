@@ -79,3 +79,8 @@ class User(AbstractBaseUser):
     def is_active(self):
         return self.active
 
+
+class OTP(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT())
+    otp_code = models.IntegerField(max_length=20)
+    created_at = models.DateTimeField(auto_now_add=True)

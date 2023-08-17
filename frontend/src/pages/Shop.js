@@ -11,7 +11,7 @@ export default function Shop() {
                    فروشگاه 
                 </div>
             </div>
-        <div className="mt-14">
+        <div className="mt-14 mb-16">
             <ProductCard title={'عنوان محصول'}/>
             <ProductCard title={'عنوان محصول'}/>
             <ProductCard title={'عنوان محصول'}/>

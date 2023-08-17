@@ -1,8 +1,8 @@
 from rest_framework import serializers
-from .models import Bill
+from .models import Orders
 
 
-class BillSerializer(serializers.ModelSerializer):
+class OrderSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Bill
+        model = Orders
         fields = '__all__'

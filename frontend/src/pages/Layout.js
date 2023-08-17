@@ -18,7 +18,7 @@ import 'swiper/css';
 export default function Layout() {
 
     return (
-        <div className='fixed h-screen w-screen bg-[#111416] overflow-scroll'>
+        <div className='fixed h-screen w-screen bg-[#111416] overflow-scroll mt-14 '>
             <div className='fixed top-0 flex w-full justify-center bg-[#111416] border-b border-[#7B7B7B] shadow-md z-50 p-2'>
                 <div className='flex w-full justify-between items-center text-[#7B7B7B] bg-[#24262D] rounded'>
                     <div className="pl-2">
@@ -28,7 +28,7 @@ export default function Layout() {
 
                 </div>
             </div>
-            <div className='flex w-full mb-2 mt-16 p-2'>
+            <div className='flex w-full p-2'>
                 <Swiper
                     spaceBetween={10}
                     slidesPerView={1}
@@ -42,34 +42,34 @@ export default function Layout() {
                     onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide>
-                        <div className='w-full h-full overflow-hidden rounded-md'>
+                        <div className='w-full h-60 overflow-hidden rounded-md'>
 
                             <img alt={'slide'} src={slide} className='object-cover'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-full overflow-hidden rounded-md'>
+                        <div className='w-full h-60 overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide2} className='object-contain'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-full overflow-hidden rounded-md'>
+                        <div className='w-full h-60 overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide3} className='object-contain'/>
                         </div>
                     </SwiperSlide>
 
                 </Swiper>
             </div>
-            <div className='flex flex-col h-full items-center p-2'>
+            <div className='flex flex-col h-full items-center px-2 mb-14'>
 
 
                 <div className='flex w-full h-28 gap-2 text-[#7B7B7B]'>
-                    <div className='flex flex-col w-full h-full text-center items-center bg-[#24262D] rounded'>
+                    {/* <div className='flex flex-col w-full h-full text-center items-center bg-[#24262D] rounded'>
                         <div className={'py-4'}>
                             <FaHeadset size={30} color={'white'}/>
                         </div>
                         پشتیبانی عالی
-                    </div>
+                    </div> */}
                     <div className='flex flex-col w-full h-full  text-center items-center bg-[#24262D] rounded'>
                         <div className={'py-4'}>
                             <FaTruckFast size={30} color={'white'}/>
@@ -93,7 +93,7 @@ export default function Layout() {
                 <div className='w-full text-center text-2xl font-bold py-4 text-white'>
                     دسته بندی محصولات
                 </div>
-                <div className='grid grid-cols-2 gap-2 w-full'>
+                <div className='grid grid-cols-2 gap-2 w-full '>
                     <div className='h-52 w-full bg-[#24262D] rounded-md overflow-hidden'>
                         <div className='text-center py-2 text-white'>
                             عنوان
@@ -126,11 +126,7 @@ export default function Layout() {
 
                         </div>
                     </div>
-
                 </div>
-            </div>
-            <div className="rounded p-2">
-
             </div>
         </div>
     )

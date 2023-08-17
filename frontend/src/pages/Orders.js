@@ -1,3 +1,4 @@
+import CheckoutItem from '../components/CheckoutItem'
 
 export default function Orders() {
     return(
@@ -6,6 +7,15 @@ export default function Orders() {
                 <div className={'font-bold text-[#7B7B7B] text-right w-full'}>
                    سفارشات من 
                 </div>
+            </div>
+            <div className='mt-14 mb-16'>
+                <CheckoutItem/>
+                <CheckoutItem/>
+                <CheckoutItem/>
+                <CheckoutItem/>
+                <CheckoutItem/>
+                <CheckoutItem/>
+                <CheckoutItem/>
             </div>
         </div>
     )
