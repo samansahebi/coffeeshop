@@ -1,20 +1,15 @@
 from rest_framework import serializers
-from .models import Provider, Category, Products
+from .models import User, OTP
 
 
-class ProviderSerializer(serializers.ModelSerializer):
+class UserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Provider
+        model = User
         fields = '__all__'
 
 
-class CategorySerializer(serializers.ModelSerializer):
+class OTPSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Category
+        model = OTP
         fields = '__all__'
 
-
-class ProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Products
-        fields = '__all__'
