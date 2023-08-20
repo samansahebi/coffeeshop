@@ -20,7 +20,7 @@ export default function Layout() {
     return (
         <div className='fixed h-screen w-screen bg-[#111416] overflow-scroll mt-14 '>
             <div className='fixed top-0 flex w-full justify-center bg-[#111416] border-b border-[#7B7B7B] shadow-md z-50 p-2'>
-                <div className='flex w-full justify-between items-center text-[#7B7B7B] bg-[#24262D] rounded'>
+                <div className='flex flex-row-reverse w-full justify-between items-center text-[#7B7B7B] bg-[#24262D] rounded'>
                     <div className="pl-2">
                         <FaMagnifyingGlass/>
                     </div>

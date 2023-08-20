@@ -26,7 +26,7 @@ function App() {
     <div className="App">
 
           <div>
-            <div className='flex flex-row-reverse fixed items-center bottom-0 w-full h-14 bg-[#111416] rounded-t-lg z-50 border-t border-[#7B7B7B]'>
+            <div className='flex fixed items-center bottom-0 w-full h-14 bg-[#111416] rounded-t-lg z-50 border-t border-[#7B7B7B]'>
                 <div onClick={() => navigate('/')} className='flex w-full justify-center p-2 m-1 rounded-md'>
                     <HiHome size={25} color='7B7B7B'/>
                 </div>

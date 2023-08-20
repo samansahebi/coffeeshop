@@ -10,11 +10,12 @@ export default function Checkout() {
                     ادامه خرید
                 </div>
                 <div className='flex p-4 text-white'>
-                    <div className='px-2'>
-                        تومان
-                    </div>
+
                     <div>
                         20000
+                    </div>
+                    <div className='px-2'>
+                        تومان
                     </div>
                 </div>
             </div>
