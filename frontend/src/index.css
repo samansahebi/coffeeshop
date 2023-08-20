@@ -2,3 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'IRANSans';
+    src: local('IRANSans'), url('assets/dana-fanum-regular.woff') format('truetype'),
+    url("assets/dana-fanum-regular.woff") format('embedded-opentype');
+}
+
+
+body{
+    font-family: "IRANSans";
+}
