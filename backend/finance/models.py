@@ -1,6 +1,6 @@
 from django.db import models
-from ..shop.models import Product, ProductUnit
-from ..customers.models import Customer, Address
+from shop.models import Product, ProductUnit
+from customers.models import Customer, Address
 
 
 class OrderItem(models.Model):

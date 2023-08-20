@@ -81,6 +81,6 @@ class User(AbstractBaseUser):
 
 
 class OTP(models.Model):
-    user = models.ForeignKey(User, on_delete=models.PROTECT())
-    otp_code = models.IntegerField(max_length=20)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    otp_code = models.IntegerField()
     created_at = models.DateTimeField(auto_now_add=True)
