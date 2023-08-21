@@ -1,9 +1,55 @@
+import time
+from datetime import datetime, timedelta
+from random import randint
+from rest_framework import status, exceptions
+from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import RefreshToken
+from .models import OTP, User
+from django.conf import settings
+from kavenegar import *
+from django.utils.translation import gettext_lazy as _
+import datetime
+import pytz
+
+utc = pytz.UTC
 
 
 class Login(APIView):
+
+    @staticmethod
+    def get_tokens_for_user(user):
+        refresh = RefreshToken.for_user(user)
+
+        return {
+            'refresh_token': str(refresh),
+            'access_token': str(refresh.access_token),
+        }
+
     def post(self, request):
-        pass
+        data = request.data.copy()
+
+        phone_number = data.get('phone_number')
+        otp_code = data.get('otp')
+        current_time = datetime.now()
+
+        try:
+            query = OTP.objects.get(user__phone_number=phone_number)
+        except:
+            raise exceptions.NotFound('otp code is not correct')
+
+        generated_otp = query.otp_code
+        time_created = query.created_at
+
+        if generated_otp == otp_code:
+            if time_created.replace(tzinfo=None) + datetime.min(5) < current_time:
+                user = User.objects.get(phone_number=phone_number)
+                user.active = True
+                user.save()
+                query.delete()
+                return Response(self.get_tokens_for_user(user), status=status.HTTP_200_OK)
+            return Response({'detail': _('OTP expired. Request for OTP again.')}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({'detail': _('Wrong OTP Entered.')}, status=status.HTTP_403_FORBIDDEN)
 
 
 class Refresh(APIView):
@@ -13,5 +59,35 @@ class Refresh(APIView):
 
 class SendOTP(APIView):
     def post(self, request):
-        pass
+        phone_number = request.data.get('phone_number')
+        if User.objects.filter(phone_number=phone_number).exists():
+            user = User.objects.get(phone_number=phone_number)
+        else:
+            user = User.objects.create_user(phone_number=phone_number)
+        otp_model = OTP.objects.filter(user__phone_number=phone_number)
+        if otp_model.exists():
+            time_created = otp_model.first().created_at
+            current_time = datetime.now()
+            if time_created.replace(uzinfo=None) + timedelta(minutes=5) < current_time:  # 5 Minutes
+                self.otp_create_send(user)
+            else:
+                return Response({'please wait 5 minutes and try again'})
+        else:
+            self.otp_create_send(user)
 
+    @staticmethod
+    def otp_create_send(user):
+        OTP.objects.filter(user=user).delete()
+        otp = randint(100000, 999999)
+        while OTP.objects.filter(otp_code=otp).exists():
+            otp = randint(100000, 999999)
+        otp_model = OTP.objects.create(otp_code=otp, user=user)
+        # api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
+        # params = {
+        #     'sender': '10004346',
+        #     'receptor': user.phone_number,
+        #     'message': _(f'your otp code is: {otp_model.otp_code}')
+        # }
+        # response = api.sms_send(params)
+        print(otp_model.otp_code)
+        return None

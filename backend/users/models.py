@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import (BaseUserManager, AbstractBaseUser)
+from django.utils.translation import gettext_lazy as _
 import datetime
 from django.conf import settings
 from django.core.validators import RegexValidator
@@ -9,16 +10,15 @@ class UserManager(BaseUserManager):
     def create_user(self, phone_number, password=None):
 
         if not phone_number:
-            raise ValueError('Users must have an phone number')
-
-        if not password:
-            raise ValueError('Users must have an password')
+            raise ValueError(_('Users must have an phone number'))
 
         user = self.model(
             phone_number=phone_number,
         )
-
-        user.set_password(password)
+        if not password:
+            user.set_unusable_password()
+        else:
+            user.set_password(password)
         user.save(using=self._db)
         return user
 
@@ -45,7 +45,7 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser):
     phone_number = models.CharField(
-        verbose_name='phone number',
+        verbose_name=_('phone number'),
         max_length=255,
         unique=True,
     )
