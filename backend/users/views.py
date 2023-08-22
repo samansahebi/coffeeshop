@@ -64,7 +64,7 @@ class SendOTP(APIView):
         if otp_model.exists():
             time_created = otp_model.first().created_at
             current_time = timezone.now()
-            if time_created + timedelta(minutes=5) < current_time:  # 5 Minutes
+            if time_created + timedelta(minutes=2) < current_time:  # 5 Minutes
                 self.otp_create_send(user)
                 return Response({'detail': _('otp code has been sent to your mobile number')})
             else:
@@ -80,13 +80,12 @@ class SendOTP(APIView):
         while OTP.objects.filter(otp_code=otp).exists():
             otp = randint(100000, 999999)
         otp_model = OTP.objects.create(otp_code=otp, user=user)
-        # api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
-        # params = {
-        #     'sender': '10004346',
-        #     'receptor': user.phone_number,
-        #     'message': _(f'your otp code is: {otp_model.otp_code}')
-        # }
-        # response = api.sms_send(params)
-        # print(response)
+        api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
+        params = {
+            'receptor': user.phone_number,
+            'message': _(f'your otp code is: {otp_model.otp_code}')
+        }
+        response = api.sms_send(params)
+        print(response)
         print(otp_model.otp_code)
         return None
