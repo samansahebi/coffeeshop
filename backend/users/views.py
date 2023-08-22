@@ -18,8 +18,8 @@ class Login(APIView):
         refresh = RefreshToken.for_user(user)
 
         return {
-            'refresh_token': str(refresh),
-            'access_token': str(refresh.access_token),
+            'refresh': str(refresh),
+            'access': str(refresh.access_token),
         }
 
     def post(self, request):
@@ -66,12 +66,12 @@ class SendOTP(APIView):
             current_time = timezone.now()
             if time_created + timedelta(minutes=5) < current_time:  # 5 Minutes
                 self.otp_create_send(user)
-                return Response({'detail': 'otp code has been sent to your mobile number'})
+                return Response({'detail': _('otp code has been sent to your mobile number')})
             else:
-                return Response({'please wait 5 minutes and try again'}, status=status.HTTP_403_FORBIDDEN)
+                return Response({_('please wait 5 minutes and try again')}, status=status.HTTP_403_FORBIDDEN)
         else:
             self.otp_create_send(user)
-            return Response({'detail': 'otp code has been sent to your mobile number'})
+            return Response({'detail': _('otp code has been sent to your mobile number')})
 
     @staticmethod
     def otp_create_send(user):
@@ -80,13 +80,13 @@ class SendOTP(APIView):
         while OTP.objects.filter(otp_code=otp).exists():
             otp = randint(100000, 999999)
         otp_model = OTP.objects.create(otp_code=otp, user=user)
-        api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
-        params = {
-            'sender': '10004346',
-            'receptor': user.phone_number,
-            'message': _(f'your otp code is: {otp_model.otp_code}')
-        }
-        response = api.sms_send(params)
-        print(response)
+        # api = KavenegarAPI(settings.KAVENEGAR_API_KEY)
+        # params = {
+        #     'sender': '10004346',
+        #     'receptor': user.phone_number,
+        #     'message': _(f'your otp code is: {otp_model.otp_code}')
+        # }
+        # response = api.sms_send(params)
+        # print(response)
         print(otp_model.otp_code)
         return None
