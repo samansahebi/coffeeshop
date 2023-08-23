@@ -14,6 +14,7 @@ import Info from "./pages/Info";
 import ContactUs from "./pages/ContactUs";
 import Orders from "./pages/Orders";
 import Login from "./pages/Login";
+import OTP from "./pages/OTP";
 
 function App() {
   const navigate = useNavigate();
@@ -39,6 +40,7 @@ function App() {
             <Routes>
                 <Route exact path="/" element={<Layout/>} />
                 <Route exact path="login" element={<Login/>} />
+                <Route exact path="otp" element={<OTP/>} />
                 <Route exact path="home" element={<Home/>} />
                 <Route exact path="shop" element={<Shop/>} />
                 <Route exact path="checkout" element={<Checkout/>} />

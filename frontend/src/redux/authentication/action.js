@@ -3,7 +3,6 @@ import {loginApi, logoutApi, refreshTokenApi, sendOtpApi} from "../../services/a
 
 export const sendOtpAction = (props) => {
     return (dispatch) => {
-        // dispatch({type: SEND_OTP});
         return sendOtpApi(props).then(
             res => res?.detail ? dispatch({type: SEND_OTP, res}) : dispatch({type: SET_ERROR})
         );
@@ -14,7 +13,7 @@ export const loginAction = (props) => {
     return (dispatch) => {
         dispatch({type: GET_TOKEN});
         return loginApi(props).then(
-            res => res?.status ? dispatch({type: SET_TOKEN, res}) : dispatch({type: SET_ERROR})
+            res => res?.access ? dispatch({type: SET_TOKEN, res}) : dispatch({type: SET_ERROR})
         );
     }
 };

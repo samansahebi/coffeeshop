@@ -13,10 +13,10 @@ export default createReducer({
         return {...state,error: false, loading: true}
     },
     [SET_TOKEN]: (state, payload) => {
-        return {...state,error: false, loading: false, ...payload.res.data}
+        return {...state,error: false, loading: false, ...payload.res}
     },
     [SEND_OTP]: (state, payload) => {
-        return {...state,error: false, loading: false, ...payload.res.data}
+        return {...state,error: false, loading: false, ...payload.res}
     },
     [SET_ERROR]: (state) => {
         return {...state, loading: false,error: true}
