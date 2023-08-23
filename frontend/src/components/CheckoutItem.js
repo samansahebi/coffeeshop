@@ -1,6 +1,5 @@
 import coffee from '../assets/coffee.jpg'
 import { useNavigate } from 'react-router-dom';
-import Modal from "./Modal";
 
 
 export default function CheckoutItem({title}) {

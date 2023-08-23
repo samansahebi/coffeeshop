@@ -1,4 +1,5 @@
 from django.db import models
+from users.models import User
 
 
 class Province(models.Model):
@@ -28,6 +29,7 @@ class Address(models.Model):
 
 
 class Customer(models.Model):
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
     first_name = models.CharField(max_length=50)
     last_name = models.CharField(max_length=50)
     email = models.EmailField(max_length=200)

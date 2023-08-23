@@ -1,4 +1,3 @@
-import {FaFilter} from "react-icons/fa6";
 import ProductCard from "../components/ProductCard";
 import ModalFilter from "../components/ModalFilter";
 

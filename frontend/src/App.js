@@ -2,14 +2,10 @@ import { Route, Routes } from "react-router-dom";
 import Home from './pages/Home'
 import Layout from './pages/Layout'
 import Shop from './pages/Shop'
-// import {BottomNavigation} from 'reactjs-bottom-navigation'
-// import 'reactjs-bottom-navigation'
 import {HiHome} from "react-icons/hi";
 import {FaShop} from "react-icons/fa6";
 import {FaBagShopping} from "react-icons/fa6";
-import {FaNewspaper} from "react-icons/fa6";
 import {FaUser} from "react-icons/fa6";
-// import { useHistory } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom';
 import Checkout from "./pages/Checkout";
 import Profile from "./pages/Profile";

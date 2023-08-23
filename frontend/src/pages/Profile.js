@@ -3,11 +3,9 @@ import {FaFileLines} from "react-icons/fa6";
 import {FaPenToSquare} from "react-icons/fa6";
 import {FaArrowRightFromBracket} from "react-icons/fa6";
 import ProfileItems from "../components/ProfileItems";
-import {useNavigate} from 'react-router-dom';
 
 
 export default function Profile() {
-    const navigate = useNavigate();
 
     return (
         <div className='fixed h-screen w-screen bg-[#111416]'>

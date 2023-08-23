@@ -1,7 +1,6 @@
 import coffee from '../assets/coffee.jpg'
 import { useNavigate } from 'react-router-dom';
 import Modal from "./Modal";
-import BTNAddToCard from './BTNAddToCard';
 
 
 export default function ProductCard({title}) {

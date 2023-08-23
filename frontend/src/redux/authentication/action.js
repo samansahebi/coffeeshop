@@ -1,5 +1,14 @@
-import {GET_TOKEN, SET_TOKEN, SET_ERROR, LOGOUT} from './types';
-import {loginApi, logoutApi, refreshTokenApi} from "../../services/authorization";
+import {GET_TOKEN, SET_TOKEN, SET_ERROR, LOGOUT, SEND_OTP} from './types';
+import {loginApi, logoutApi, refreshTokenApi, sendOtpApi} from "../../services/authorization";
+
+export const sendOtpAction = (props) => {
+    return (dispatch) => {
+        // dispatch({type: SEND_OTP});
+        return sendOtpApi(props).then(
+            res => res?.detail ? dispatch({type: SEND_OTP, res}) : dispatch({type: SET_ERROR})
+        );
+    }
+};
 
 export const loginAction = (props) => {
     return (dispatch) => {

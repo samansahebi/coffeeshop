@@ -1,6 +1,3 @@
-import {HiMenu} from "react-icons/hi";
-
-import {FaHeadset} from "react-icons/fa6";
 import {FaTruckFast} from "react-icons/fa6";
 import {FaAward} from "react-icons/fa6";
 import {FaCreditCard} from "react-icons/fa6";
@@ -8,8 +5,6 @@ import {FaMagnifyingGlass} from "react-icons/fa6";
 import slide from '../assets/mike-kenneally-TD4DBagg2wE-unsplash.jpg'
 import slide2 from '../assets/nathan-dumlao-Y3AqmbmtLQI-unsplash.jpg'
 import slide3 from '../assets/nathan-dumlao-pMW4jzELQCw-unsplash.jpg'
-// import Home from './Home'
-// import Shop from './Shop'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay} from 'swiper/modules';
 import 'swiper/css';

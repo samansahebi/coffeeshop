@@ -1,6 +1,21 @@
-import {FaMagnifyingGlass} from "react-icons/fa6";
+import {useEffect, useState} from "react";
+import {sendOtpAction} from "../redux/authentication/action";
+import {useDispatch} from "react-redux";
+import {useNavigate} from "react-router-dom";
+
 
 export default function Login() {
+
+    const [phoneNumber, setPhoneNumber] = useState('')
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
+    const handleSendOtp = () => {
+        dispatch(sendOtpAction({phone_number: phoneNumber}))
+    }
+    useEffect(()=>{
+        console.log(phoneNumber)
+    }, [phoneNumber])
     return (
         <div
             className='fixed flex flex-col justify-center items-center h-screen w-screen bg-[#111416] overflow-scroll p-4'>
@@ -10,10 +25,12 @@ export default function Login() {
             </div>
             <div className='flex w-full justify-between items-center text-[#7B7B7B] bg-[#24262D] rounded m-4'>
                 <input className='bg-[#24262D] p-2 rounded w-full text-right outline-none text-[#7B7B7B]'
+                       value={phoneNumber}
+                       onChange={event => setPhoneNumber(event.target.value)}
                        placeholder='شماره همراه'/>
 
             </div>
-            <button className="w-36 h-10 bg-[#1CEA87] rounded ">
+            <button className="w-36 h-10 bg-[#1CEA87] rounded " onClick={handleSendOtp}>
                 ورود
             </button>
         </div>
