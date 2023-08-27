@@ -1,5 +1,5 @@
 import createReducer from '../createReducer';
-import {LOGIN, SET_TOKEN, SET_ERROR, GET_TOKEN, SEND_OTP} from './types';
+import {LOGIN, SET_TOKEN, SET_ERROR, GET_TOKEN, SEND_OTP, GET_PROFILE} from './types';
 
 const initialState = {
     access: '',
@@ -16,6 +16,9 @@ export default createReducer({
         return {...state,error: false, loading: false, ...payload.res}
     },
     [SEND_OTP]: (state, payload) => {
+        return {...state,error: false, loading: false, ...payload.res}
+    },
+    [GET_PROFILE]: (state, payload) => {
         return {...state,error: false, loading: false, ...payload.res}
     },
     [SET_ERROR]: (state) => {

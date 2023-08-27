@@ -1,5 +1,7 @@
 import Api from './index'
 
+export const getProfileApi = (data) => Api.GET({url: "customers/customer-info", data});
+
 export const sendOtpApi = (data) => Api.POST({url: "users/send-otp", data});
 
 export const loginApi = (data) => Api.POST({url: "users/login", data});

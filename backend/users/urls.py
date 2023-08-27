@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import Login, Refresh, SendOTP
+from .views import Login, SendOTP
 from rest_framework_simplejwt.views import TokenRefreshView
 
 

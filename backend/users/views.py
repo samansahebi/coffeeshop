@@ -48,11 +48,6 @@ class Login(APIView):
         return Response({'detail': _('Wrong OTP Entered.')}, status=status.HTTP_403_FORBIDDEN)
 
 
-class Refresh(APIView):
-    def post(self, request):
-        pass
-
-
 class SendOTP(APIView):
     def post(self, request):
         phone_number = request.data.get('phone_number')

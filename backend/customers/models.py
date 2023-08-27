@@ -30,11 +30,10 @@ class Address(models.Model):
 
 class Customer(models.Model):
     user = models.ForeignKey(User, on_delete=models.PROTECT)
-    first_name = models.CharField(max_length=50)
-    last_name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=200)
-    address = models.ForeignKey(Address, on_delete=models.CASCADE)
-    postal_code = models.CharField(max_length=50)
+    first_name = models.CharField(max_length=50, null=True, blank=True)
+    last_name = models.CharField(max_length=50, null=True, blank=True)
+    email = models.EmailField(max_length=200, null=True, blank=True)
+    address = models.ForeignKey(Address, on_delete=models.CASCADE, null=True, blank=True)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
