@@ -14,13 +14,15 @@ class CategorySerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class ProductSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Product
-        fields = '__all__'
-
-
 class ProductUnitSerializer(serializers.ModelSerializer):
     class Meta:
         model = ProductUnit
+        fields = '__all__'
+
+
+class ProductSerializer(serializers.ModelSerializer):
+    unit = ProductUnitSerializer()
+
+    class Meta:
+        model = Product
         fields = '__all__'

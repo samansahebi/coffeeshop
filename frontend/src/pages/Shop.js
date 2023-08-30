@@ -25,7 +25,11 @@ export default function Shop() {
             </div>
             <div className="mt-14 mb-16">
                 {shop.data?.map((product)=>(
-                        <ProductCard title={product.title}/>
+                        <ProductCard
+                            title={product.title}
+                            img={`${process.env.REACT_APP_HOST}${product.image}`}
+                            price={product.unit.price_per_unit}
+                        />
                     )
                 )}
                 {/*<ProductCard title={'عنوان محصول'}/>*/}

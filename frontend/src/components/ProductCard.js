@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import Modal from "./Modal";
 
 
-export default function ProductCard({title}) {
+export default function ProductCard({title, img, price}) {
       const navigate = useNavigate();
 
     return (
@@ -14,12 +14,12 @@ export default function ProductCard({title}) {
                         {title}
                     </div>
                     <div className="w-36 h-24 bg-gray-100 rounded-r-lg">
-                        <img alt='coffee' src={coffee} className='w-36 h-24 rounded-r overflow-auto object-cover'/>
+                        <img alt='coffee' src={img} className='w-36 h-24 rounded-r overflow-auto object-cover'/>
                     </div>
                 </div>
                 <div className='flex flex-row-reverse justify-between'>
                 <div className='flex pl-2 pt-1 text-red-500'>
-                    <div>270000</div>
+                    <div>{price}</div>
                     <div className='pr-2'>تومان</div>
 
                 </div>
