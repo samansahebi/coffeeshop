@@ -30,4 +30,7 @@ class Product(models.Model):
     unit = models.ForeignKey(ProductUnit, on_delete=models.PROTECT)
     quantity = models.CharField(max_length=200)
 
+    def __str__(self):
+        return self.title
+
 

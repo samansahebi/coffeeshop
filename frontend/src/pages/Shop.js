@@ -1,7 +1,19 @@
 import ProductCard from "../components/ProductCard";
 import ModalFilter from "../components/ModalFilter";
+import {useDispatch, useSelector} from "react-redux";
+// import {useNavigate} from "react-router-dom";
+import {useEffect} from "react";
+import {getProductListAction} from "../redux/shop/action";
 
 export default function Shop() {
+    const shop = useSelector(({shop}) => shop)
+    const dispatch = useDispatch()
+    // const navigate = useNavigate()
+
+    useEffect(()=>{
+        dispatch(getProductListAction())
+        console.log(shop)
+    }, [])
     return (
         <div className='fixed h-screen w-screen bg-[#111416] overflow-scroll'>
             <div
@@ -12,12 +24,15 @@ export default function Shop() {
                 </div>
             </div>
             <div className="mt-14 mb-16">
-                <ProductCard title={'عنوان محصول'}/>
-                <ProductCard title={'عنوان محصول'}/>
-                <ProductCard title={'عنوان محصول'}/>
-                <ProductCard title={'عنوان محصول'}/>
-                <ProductCard title={'عنوان محصول'}/>
-                <ProductCard title={'عنوان محصول'}/>
+                {shop.data?.map((product)=>(
+                        <ProductCard title={product.title}/>
+                    )
+                )}
+                {/*<ProductCard title={'عنوان محصول'}/>*/}
+                {/*<ProductCard title={'عنوان محصول'}/>*/}
+                {/*<ProductCard title={'عنوان محصول'}/>*/}
+                {/*<ProductCard title={'عنوان محصول'}/>*/}
+                {/*<ProductCard title={'عنوان محصول'}/>*/}
             </div>
         </div>
     )

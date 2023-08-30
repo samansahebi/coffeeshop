@@ -1,4 +1,6 @@
 from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework import exceptions
 from .models import Product, ProductUnit, Category, Provider
 from .serializers import ProductSerializer, ProductUnitSerializer, ProviderSerializer, CategorySerializer
 
@@ -8,7 +10,8 @@ class ListProducts(APIView):
     serializer_class = ProductSerializer
 
     def get(self, request):
-        pass
+        serializer = self.serializer_class(self.queryset.all(), many=True)
+        return Response(serializer.data)
 
 
 class GetProduct(APIView):
@@ -16,7 +19,12 @@ class GetProduct(APIView):
     serializer_class = ProductSerializer
 
     def get(self, request, slug):
-        pass
+        try:
+            serializer = self.serializer_class(self.queryset.get(slug=slug))
+        except:
+            raise exceptions.NotFound()
+        return Response(serializer.data)
+
 
 
 class ListProductUnit(APIView):
@@ -32,7 +40,8 @@ class ListCategory(APIView):
     serializer_class = CategorySerializer
 
     def get(self, request):
-        pass
+        serializer = self.serializer_class(self.queryset.all(), many=True)
+        return Response(serializer.data)
 
 
 class ListProvider(APIView):

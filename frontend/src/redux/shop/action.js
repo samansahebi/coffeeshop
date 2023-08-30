@@ -1,25 +1,11 @@
-import {GET_TOKEN, SET_TOKEN, SET_ERROR, LOGOUT} from './types';
-import {loginApi, logoutApi, refreshTokenApi} from "../../services/authorization";
+import {GET_PRODUCT_LIST, SET_PRODUCT_LIST, SET_ERROR} from './types';
+import {getProductListApi} from "../../services/shop";
 
-export const loginAction = (props) => {
+export const getProductListAction = (props) => {
     return (dispatch) => {
-        dispatch({type: GET_TOKEN});
-        return loginApi(props).then(
-            res => res?.status ? dispatch({type: SET_TOKEN, res}) : dispatch({type: SET_ERROR})
+        dispatch({type: GET_PRODUCT_LIST});
+        return getProductListApi(props).then(
+            res => res ? dispatch({type: SET_PRODUCT_LIST, res}) : dispatch({type: SET_ERROR})
         );
     }
 };
-
-export const refreshTokenAction = (res) => {
-    return (dispatch) => {
-        dispatch({type: SET_TOKEN, res})
-    }
-};
-
-export function logoutAction(props) {
-    return (dispatch) => {
-        return logoutApi(props).then(
-            res => res?.status ? dispatch({type: LOGOUT, res}) : dispatch({type: SET_ERROR})
-        );
-    };
-}

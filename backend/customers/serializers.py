@@ -9,7 +9,7 @@ class AddressSerializer(serializers.ModelSerializer):
 
 
 class CustomerSerializer(serializers.ModelSerializer):
-    address = AddressSerializer(many=True)
+    address = AddressSerializer()
     phone_number = serializers.CharField(source='user.phone_number', read_only=True)
 
     class Meta:
