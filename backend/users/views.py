@@ -9,6 +9,7 @@ from django.utils import timezone
 from django.conf import settings
 from kavenegar import *
 from django.utils.translation import gettext_lazy as _
+from customers.models import Customer
 
 
 class Login(APIView):
@@ -42,6 +43,7 @@ class Login(APIView):
                 user = User.objects.get(phone_number=phone_number)
                 user.active = True
                 user.save()
+                Customer.objects.create(user=user)
                 query.delete()
                 return Response(self.get_tokens_for_user(user), status=status.HTTP_200_OK)
             return Response({'detail': _('OTP expired. Request for OTP again.')}, status=status.HTTP_400_BAD_REQUEST)

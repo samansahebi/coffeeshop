@@ -1,5 +1,5 @@
 from rest_framework.views import APIView
-from rest_framework.permissions import AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from .serializers import OrderSerializer
@@ -9,7 +9,7 @@ from .models import Order, OrderItem
 class OrderList(APIView):
     queryset = Order.objects.all()
     serializer_classes = OrderSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         serializer = self.serializer_classes(self.queryset)
@@ -20,7 +20,7 @@ class OrderList(APIView):
 class CreateOrder(APIView):
     queryset = Order.objects.all()
     serializer_classes = OrderSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         serializer = self.serializer_classes(data=request.data)
@@ -32,7 +32,7 @@ class CreateOrder(APIView):
 class CreateOrderItem(APIView):
     queryset = OrderItem.objects.all()
     serializer_classes = OrderSerializer
-    permission_classes = [AllowAny]
+    permission_classes = [IsAuthenticated]
 
     def post(self, request):
         serializer = self.serializer_classes(data=request.data)

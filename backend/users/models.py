@@ -49,9 +49,9 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    active = models.BooleanField(default=False)
-    staff = models.BooleanField(default=False)
-    admin = models.BooleanField(default=False)
+    active = models.BooleanField(verbose_name=_('is active'), default=False)
+    staff = models.BooleanField(verbose_name=_('is staff'), default=False)
+    admin = models.BooleanField(verbose_name=_('is admin'), default=False)
 
     USERNAME_FIELD = 'phone_number'
     REQUIRED_FIELDS = []
