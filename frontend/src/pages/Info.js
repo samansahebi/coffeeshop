@@ -26,22 +26,22 @@ export default function Info() {
                     ویرایش مشخصات
                 </div>
             </div>
-            <div className="p-2 mt-14">
-                <input className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'
+            <div className="p-2 mt-14 grid md:grid-cols-3 gap-2">
+                <input className='bg-[#24262D] p-2  rounded w-full text-right outline-none text-[#7B7B7B]'
                        value={first_name}
                        placeholder='نام'/>
-                <input className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'
+                <input className='bg-[#24262D] p-2  rounded w-full text-right outline-none text-[#7B7B7B]'
                        value={last_name}
                        placeholder='نام خانوادگی'/>
-                <input className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'
+                <input className='bg-[#24262D] p-2 rounded w-full text-right outline-none text-[#7B7B7B]'
                        value={phone_number}
                        placeholder='شماره موبایل'/>
-                <input className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'
+                <input className='bg-[#24262D] p-2 rounded w-full text-right outline-none text-[#7B7B7B]'
                        value={email}
                        placeholder='ایمیل'/>
                 <ModalAddress/>
             </div>
-            <div className='fixed bottom-16 flex items-end w-full'>
+            <div className='fixed bottom-16 md:bottom-2 flex items-end w-full'>
                 <div className='h-10 w-full p-2 bg-[#1CEA87] rounded text-black text-center font-bold mx-2'>
                     ثبت تغییرات
                 </div>

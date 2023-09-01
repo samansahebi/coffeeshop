@@ -15,9 +15,9 @@ export default function Product() {
         dispatch(getProductAction(slug))
     }, [dispatch])
     return (
-        <div className={'fixed h-screen w-screen bg-[#111416] overflow-scroll'}>
+        <div className='fixed h-screen w-screen bg-[#111416] overflow-scroll md:pt-14'>
             <div className="w-full rounded-b-lg bg-[#24262D] border-b border-[#7B7B7B]">
-                <div className="flex items-end h-80 w-full bg-white rounded-b-lg shadow-md">
+                <div className="flex items-end md:h-96 h-80 w-full bg-white rounded-b-lg shadow-md">
                     <img alt={'slide'} src={`${process.env.REACT_APP_HOST}${product?.image}`} className='object-cover rounded-b-lg'/>
                 </div>
                 <div className="flex justify-center text-center text-xl font-bold text-white py-3">

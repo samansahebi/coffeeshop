@@ -10,11 +10,18 @@ class OrderItem(models.Model):
 
 
 class Order(models.Model):
+    CHOICES = (
+        ('Checkout', 'Checkout'),
+        ('Pending', 'Pending'),
+        ('Paid', 'Paid'),
+        ('TransferPending', 'TransferPending'),
+        ('Delivered', 'Delivered'),
+    )
     items = models.ManyToManyField(OrderItem)
     customer = models.ForeignKey(Customer, verbose_name=_('customer'), on_delete=models.PROTECT)
     address = models.ForeignKey(Address, verbose_name=_('address'), on_delete=models.PROTECT)
     description = models.CharField(_('description'), max_length=200, null=True, blank=True)
-    status = models.CharField(_('status'), max_length=30)
+    status = models.CharField(_('status'), max_length=30, choices=CHOICES, default='Checkout')
     total_price = models.CharField(_('total price'), max_length=30)
     date_created = models.DateTimeField(verbose_name=_('date created'), auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name=_('date updated'), auto_now=True)

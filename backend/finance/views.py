@@ -12,7 +12,17 @@ class OrderList(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        serializer = self.serializer_classes(self.queryset.filter(customer=request.user.customer), many=True)
+        serializer = self.serializer_classes(self.queryset.filter(customer=request.user.customer).exclude(status='Checkout'), many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class GetCheckout(APIView):
+    queryset = Order.objects.all()
+    serializer_classes = OrderSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = self.serializer_classes(self.queryset.filter(customer=request.user.customer, status='Checkout'), many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
