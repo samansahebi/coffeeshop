@@ -41,8 +41,10 @@ export default function Info() {
                        placeholder='ایمیل'/>
                 <ModalAddress/>
             </div>
-            <div className='h-10 p-2 bg-[#1CEA87] rounded text-black text-center font-bold mx-2'>
-                ثبت تغییرات
+            <div className='fixed bottom-16 flex items-end w-full'>
+                <div className='h-10 w-full p-2 bg-[#1CEA87] rounded text-black text-center font-bold mx-2'>
+                    ثبت تغییرات
+                </div>
             </div>
         </div>
     )

@@ -23,7 +23,7 @@ export default function Shop() {
                     فروشگاه
                 </div>
             </div>
-            <div className="mt-14 mb-16">
+            <div className="mt-14 mb-16 md:grid md:grid-cols-3">
                 {shop.data?.map((product, i)=>(
                         <ProductCard
                             key={i}

@@ -20,12 +20,12 @@ export default function Product() {
                 <div className="flex items-end h-80 w-full bg-white rounded-b-lg shadow-md">
                     <img alt={'slide'} src={`${process.env.REACT_APP_HOST}${product?.image}`} className='object-cover rounded-b-lg'/>
                 </div>
-                <div className="flex  justify-center text-center text-2xl font-bold text-white py-4">
+                <div className="flex justify-center text-center text-xl font-bold text-white py-3">
                     {product?.title}
                 </div>
             </div>
-            <div className='flex flex-col w-full h-full overflow-scroll'>
-                <div className='text-white p-6 text-right text-justify rtl'>
+            <div className='flex flex-col w-full overflow-scroll mb-14'>
+                <div className='text-white p-6 text-right text-justify'>
                     {product?.description}
                 </div>
                 <div className='flex items-center justify-center h-12 m-2 p-2 bg-[#1CEA87] rounded text-center font-bold'>

@@ -43,7 +43,8 @@ class Login(APIView):
                 user = User.objects.get(phone_number=phone_number)
                 user.active = True
                 user.save()
-                Customer.objects.create(user=user)
+                if not Customer.objects.filter(user=user).exists():
+                    Customer.objects.create(user=user)
                 query.delete()
                 return Response(self.get_tokens_for_user(user), status=status.HTTP_200_OK)
             return Response({'detail': _('OTP expired. Request for OTP again.')}, status=status.HTTP_400_BAD_REQUEST)

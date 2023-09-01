@@ -47,25 +47,25 @@ export default function Layout() {
                     onSwiper={(swiper) => console.log(swiper)}
                 >
                     <SwiperSlide>
-                        <div className='w-full h-60 overflow-hidden rounded-md'>
+                        <div className='w-full md:h-96 h-60 overflow-hidden rounded-md'>
 
                             <img alt={'slide'} src={slide} className='object-cover'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-60 overflow-hidden rounded-md'>
+                        <div className='w-full md:h-96 h-60 overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide2} className='object-contain'/>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide>
-                        <div className='w-full h-60 overflow-hidden rounded-md'>
+                        <div className='w-full md:h-96 h-60 overflow-hidden rounded-md'>
                             <img alt={'slide'} src={slide3} className='object-contain'/>
                         </div>
                     </SwiperSlide>
 
                 </Swiper>
             </div>
-            <div className='flex flex-col h-full items-center px-2 mb-14'>
+            <div className='flex flex-col items-center px-2 mb-32'>
 
 
                 <div className='flex w-full h-28 gap-2 text-[#7B7B7B]'>
@@ -98,7 +98,7 @@ export default function Layout() {
                 <div className='w-full text-center text-2xl font-bold py-4 text-white'>
                     دسته بندی محصولات
                 </div>
-                <div className='grid grid-cols-2 gap-2 w-full '>
+                <div className='grid grid-cols-2 md:grid-cols-4 gap-2 w-full '>
                     {categories?.map((category, i)=>{return(<CategoryItem key={i} title={category.title} img={`${process.env.REACT_APP_HOST}${category.image}`}/>)})}
                 </div>
             </div>
