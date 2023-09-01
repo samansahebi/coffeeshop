@@ -20,7 +20,7 @@ export default function Orders() {
                 </div>
             </div>
             <div className='mt-14 mb-16'>
-                <CheckoutItem slug={'coffee'}/>
+            {orders?.map((order)=>{return(<CheckoutItem title={'عنوان'} price={order.items[0].price} slug={order.items[0].slug}/>)})}
                 <CheckoutItem/>
                 <CheckoutItem/>
                 <CheckoutItem/>

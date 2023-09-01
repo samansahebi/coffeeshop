@@ -14,7 +14,7 @@ export default function ProductCard({title, img, price, slug}) {
         <div className='px-2 pt-2'>
             <div className="flex flex-col h-36 bg-[#24262D] rounded-lg text-right p-1" >
                 <div className="flex flex-row-reverse items-start bg-white rounded-lg mb-2 shadow-md" onClick={()=>{
-                    dispatch(getProductAction())
+                    dispatch(getProductAction(slug))
                     navigate(`/shop/${slug}`)
                 }}>
                     <div className="w-full text-right px-2 font-bold">

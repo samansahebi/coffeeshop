@@ -13,7 +13,7 @@ export default function Checkout() {
     }, [dispatch])
     return (
         <div className='fixed h-screen w-screen bg-[#111416]'>
-            <CheckoutItem title={'عنوان'} slug={'coffee'}/>
+            {orders?.map((order)=>{return(<CheckoutItem title={'عنوان'} price={order.items[0].price} slug={order.items[0].slug}/>)})}
             <div
                 className='fixed flex justify-between bottom-0 w-full h-28 border-t border-[#7B7B7B] rounded-t-lg bg-[#33363F]'>
                 <div className='flex w-28 h-10 bg-[#1CEA87] rounded-md m-2 items-center justify-center font-black'>
