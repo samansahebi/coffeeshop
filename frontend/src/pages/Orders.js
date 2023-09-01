@@ -1,6 +1,16 @@
 import CheckoutItem from '../components/CheckoutItem'
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getOrderListAction} from "../redux/orders/action";
 
 export default function Orders() {
+    const {orders} = useSelector(({orders}) => orders)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getOrderListAction())
+        console.log(orders)
+    }, [dispatch])
     return (
         <div className='fixed h-screen w-screen bg-[#111416] overflow-scroll'>
             <div
@@ -10,7 +20,7 @@ export default function Orders() {
                 </div>
             </div>
             <div className='mt-14 mb-16'>
-                <CheckoutItem/>
+                <CheckoutItem slug={'coffee'}/>
                 <CheckoutItem/>
                 <CheckoutItem/>
                 <CheckoutItem/>

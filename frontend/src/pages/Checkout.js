@@ -1,9 +1,19 @@
 import CheckoutItem from "../components/CheckoutItem";
+import {useDispatch, useSelector} from "react-redux";
+import {useEffect} from "react";
+import {getOrderListAction} from "../redux/orders/action";
 
 export default function Checkout() {
+    const {orders} = useSelector(({orders}) => orders)
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+        dispatch(getOrderListAction())
+        console.log(orders)
+    }, [dispatch])
     return (
         <div className='fixed h-screen w-screen bg-[#111416]'>
-            <CheckoutItem title={'عنوان'}/>
+            <CheckoutItem title={'عنوان'} slug={'coffee'}/>
             <div
                 className='fixed flex justify-between bottom-0 w-full h-28 border-t border-[#7B7B7B] rounded-t-lg bg-[#33363F]'>
                 <div className='flex w-28 h-10 bg-[#1CEA87] rounded-md m-2 items-center justify-center font-black'>

@@ -13,7 +13,7 @@ export default function Shop() {
     useEffect(()=>{
         dispatch(getProductListAction())
         console.log(shop)
-    }, [])
+    }, [dispatch])
     return (
         <div className='fixed h-screen w-screen bg-[#111416] overflow-scroll'>
             <div
@@ -24,11 +24,13 @@ export default function Shop() {
                 </div>
             </div>
             <div className="mt-14 mb-16">
-                {shop.data?.map((product)=>(
+                {shop.data?.map((product, i)=>(
                         <ProductCard
+                            key={i}
                             title={product.title}
                             img={`${process.env.REACT_APP_HOST}${product.image}`}
                             price={product.unit.price_per_unit}
+                            slug={product.slug}
                         />
                     )
                 )}

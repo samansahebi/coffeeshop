@@ -30,7 +30,7 @@ class Address(models.Model):
 
 
 class Customer(models.Model):
-    user = models.ForeignKey(User, verbose_name=_('user'), on_delete=models.PROTECT)
+    user = models.OneToOneField(User, on_delete=models.PROTECT, related_name='customer')
     first_name = models.CharField(_('first name'), max_length=50, null=True, blank=True)
     last_name = models.CharField(_('last name'), max_length=50, null=True, blank=True)
     email = models.EmailField(_('email'), max_length=200, null=True, blank=True)

@@ -26,6 +26,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name=_('category'), on_delete=models.PROTECT)
     provider = models.ForeignKey(Provider, verbose_name=_('provider'), on_delete=models.PROTECT)
     title = models.CharField(_('title'), max_length=50)
+    description = models.CharField(_('description'), max_length=255, default='description')
     image = models.ImageField(_('image'))
     slug = models.SlugField(_('slug'))
     unit = models.ForeignKey(ProductUnit, verbose_name=_('unit'), on_delete=models.PROTECT)

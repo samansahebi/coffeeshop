@@ -1,14 +1,20 @@
 import coffee from '../assets/coffee.jpg'
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import {getProductAction} from "../redux/shop/action";
+import {useDispatch} from "react-redux";
 
 
-export default function CheckoutItem({title}) {
-      const navigate = useNavigate();
+export default function CheckoutItem({title, slug}) {
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
 
     return (
         <div className='px-2 pt-2'>
-            <div className="flex flex-col h-36 bg-[#24262D] rounded-lg text-right p-1" >
-                <div className="flex flex-row-reverse items-start bg-white rounded-lg mb-2 shadow-md" onClick={()=>{navigate('product')}}>
+            <div className="flex flex-col h-36 bg-[#24262D] rounded-lg text-right p-1">
+                <div className="flex flex-row-reverse items-start bg-white rounded-lg mb-2 shadow-md" onClick={() => {
+                    dispatch(getProductAction(slug))
+                    navigate(`/shop/${slug}`)
+                }}>
                     <div className="w-full text-right px-2 font-bold">
                         {title}
                     </div>
@@ -17,10 +23,10 @@ export default function CheckoutItem({title}) {
                     </div>
                 </div>
                 <div className='flex flex-row-reverse justify-between'>
-                <div className='flex pr-2 pt-1 text-red-500'>
-                    <div>270000</div>
-                    <div className='px-2'>تومان</div>
-                </div>
+                    <div className='flex pr-2 pt-1 text-red-500'>
+                        <div>270000</div>
+                        <div className='px-2'>تومان</div>
+                    </div>
                 </div>
             </div>
         </div>

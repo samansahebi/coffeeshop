@@ -52,7 +52,7 @@ function App() {
                     <Route exact path="profile/info" element={<Info/>}/>
                     <Route exact path="profile/myorders" element={<Orders/>}/>
                     <Route exact path="profile/contact-us" element={<ContactUs/>}/>
-                    <Route exact path="shop/product" element={<Product/>}/>
+                    <Route exact path="shop/:slug" element={<Product/>}/>
                 </Routes>
             </div>
 

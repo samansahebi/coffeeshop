@@ -12,8 +12,7 @@ class OrderList(APIView):
     permission_classes = [IsAuthenticated]
 
     def get(self, request):
-        serializer = self.serializer_classes(self.queryset)
-        serializer.is_valid(raise_exception=True)
+        serializer = self.serializer_classes(self.queryset.filter(customer=request.user.customer), many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 

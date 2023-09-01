@@ -1,3 +1,7 @@
+export const GET_PRODUCT = 'GET_PRODUCT';
 export const GET_PRODUCT_LIST = 'GET_PRODUCT_LIST';
+export const GET_CATEGORY_LIST = 'GET_CATEGORY_LIST';
+export const SET_PRODUCT = 'SET_PRODUCT';
 export const SET_PRODUCT_LIST = 'SET_PRODUCT_LIST';
+export const SET_CATEGORY_LIST = 'SET_CATEGORY_LIST';
 export const SET_ERROR = 'SET_ERROR';

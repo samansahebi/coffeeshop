@@ -8,10 +8,20 @@ import slide3 from '../assets/nathan-dumlao-pMW4jzELQCw-unsplash.jpg'
 import {Swiper, SwiperSlide} from 'swiper/react';
 import {Autoplay} from 'swiper/modules';
 import 'swiper/css';
+import {useDispatch, useSelector} from "react-redux";
+import {getCategoryListAction} from "../redux/shop/action";
+import {useEffect} from "react"
+import CategoryItem from "../components/CategoryItem";
 
 
 export default function Layout() {
+    const {categories} = useSelector(({shop}) => shop)
+    const dispatch = useDispatch()
 
+    useEffect(()=>{
+        dispatch(getCategoryListAction())
+        console.log(categories)
+    }, [dispatch])
     return (
         <div className='fixed h-screen w-screen bg-[#111416] overflow-scroll mt-14 '>
             <div className='fixed top-0 flex w-full justify-center bg-[#111416] border-b border-[#7B7B7B] shadow-md z-50 p-2'>
@@ -89,38 +99,7 @@ export default function Layout() {
                     دسته بندی محصولات
                 </div>
                 <div className='grid grid-cols-2 gap-2 w-full '>
-                    <div className='h-52 w-full bg-[#24262D] rounded-md overflow-hidden'>
-                        <div className='text-center py-2 text-white'>
-                            عنوان
-                        </div>
-                        <div className='w-full h-full bg-white rounded'>
-
-                        </div>
-                    </div>
-                    <div className='h-52 w-full bg-[#24262D] rounded-md overflow-hidden'>
-                        <div className='text-center py-2 text-white'>
-                            عنوان
-                        </div>
-                        <div className='w-full h-full bg-white rounded'>
-
-                        </div>
-                    </div>
-                    <div className='h-52 w-full bg-[#24262D] rounded-md overflow-hidden'>
-                        <div className='text-center py-2 text-white'>
-                            عنوان
-                        </div>
-                        <div className='w-full h-full bg-white rounded'>
-
-                        </div>
-                    </div>
-                    <div className='h-52 w-full bg-[#24262D] rounded-md overflow-hidden'>
-                        <div className='text-center py-2 text-white'>
-                            عنوان
-                        </div>
-                        <div className='w-full h-full bg-white rounded'>
-
-                        </div>
-                    </div>
+                    {categories?.map((category, i)=>{return(<CategoryItem key={i} title={category.title} img={`${process.env.REACT_APP_HOST}${category.image}`}/>)})}
                 </div>
             </div>
         </div>

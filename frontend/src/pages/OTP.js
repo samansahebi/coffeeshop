@@ -14,7 +14,7 @@ export default function OTP() {
     }
 
     useEffect(()=>{
-        access && navigate('/checkout')
+        access && navigate('/orders')
     }, [access, navigate])
 
     return (
