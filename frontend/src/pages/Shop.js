@@ -34,11 +34,6 @@ export default function Shop() {
                         />
                     )
                 )}
-                {/*<ProductCard title={'عنوان محصول'}/>*/}
-                {/*<ProductCard title={'عنوان محصول'}/>*/}
-                {/*<ProductCard title={'عنوان محصول'}/>*/}
-                {/*<ProductCard title={'عنوان محصول'}/>*/}
-                {/*<ProductCard title={'عنوان محصول'}/>*/}
             </div>
         </div>
     )

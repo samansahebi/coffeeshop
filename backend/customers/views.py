@@ -2,8 +2,8 @@ from rest_framework.views import APIView
 from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status, exceptions
-from .serializers import CustomerSerializer, AddressSerializer
-from .models import Customer, Address
+from .serializers import CustomerSerializer, AddressSerializer, CitySerializer, ProvinceSerializer
+from .models import Customer, Address, City, Province
 
 
 class CreateCustomer(APIView):
@@ -26,6 +26,26 @@ class CustomerInfo(APIView):
     def get(self, request):
         query = self.queryset.get(user_id=request.user.id)
         serializer = self.serializer_classes(query)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class GetCities(APIView):
+    queryset = City.objects.all()
+    serializer_classes = CitySerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = self.serializer_classes(self.queryset.all(), many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
+class GetProvinces(APIView):
+    queryset = Province.objects.all()
+    serializer_classes = ProvinceSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        serializer = self.serializer_classes(self.queryset.all(), many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
 
