@@ -16,6 +16,7 @@ import Orders from "./pages/Orders";
 import Login from "./pages/Login";
 import OTP from "./pages/OTP";
 import {useSelector} from "react-redux";
+import SelectAddress from "./pages/SelectAddress";
 
 function App() {
     const {access} = useSelector(({authentication}) => authentication)
@@ -57,6 +58,7 @@ function App() {
                     <Route exact path="otp" element={<OTP/>}/>
                     <Route exact path="home" element={<Home/>}/>
                     <Route exact path="shop" element={<Shop/>}/>
+                    <Route exact path="select-address" element={<SelectAddress/>}/>
                     <Route exact path="checkout" element={<Checkout/>}/>
                     {access ? <Route exact path="profile" element={<Profile/>}/> :
                         <Route exact path="profile" element={<Login/>}/>}

@@ -2,12 +2,18 @@ import CheckoutItem from "../components/CheckoutItem";
 import {useDispatch, useSelector} from "react-redux";
 import {useEffect, useState} from "react";
 import {getCheckoutAction} from "../redux/orders/action";
+import {useNavigate} from "react-router-dom";
 
 export default function Checkout() {
     const [totalPrice, setTotalPrice] = useState(0)
+    const {access} = useSelector(({authentication}) => authentication)
     const {items} = useSelector(({orders}) => orders)
     const dispatch = useDispatch()
+    const navigate = useNavigate()
 
+    const handleSubmit = () => {
+        access ? navigate('/select-address') : navigate('/login')
+    }
     useEffect(() => {
         dispatch(getCheckoutAction())
         console.log(items)
@@ -19,7 +25,9 @@ export default function Checkout() {
             </div>
             <div
                 className='fixed flex justify-between bottom-0 w-full md:h-14 h-28 border-t border-[#7B7B7B] rounded-t-lg bg-[#33363F]'>
-                <div className='flex w-28 h-10 bg-[#1CEA87] rounded-md m-2 items-center justify-center font-black'>
+                <div
+                    onClick={handleSubmit}
+                    className='flex w-28 h-10 bg-[#1CEA87] rounded-md m-2 items-center justify-center font-black'>
                     ادامه خرید
                 </div>
                 <div className='flex p-4 text-white'>
