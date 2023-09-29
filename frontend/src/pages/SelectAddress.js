@@ -2,6 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {useEffect, useState} from "react";
 import {getProfileAction} from "../redux/authentication/action";
+import ModalAddress from "../components/ModalAddress";
 
 export default function SelectAddress() {
         const {address} = useSelector(({authentication}) => authentication)
@@ -21,15 +22,13 @@ export default function SelectAddress() {
                    انتخاب آدرس
                 </div>
             </div>
-            <div className={'mt-16'}>
+            <div className={'mt-16 px-2'}>
                 {address?.map((addr)=> {
-                    return (<div onClick={()=>setSelected(addr.id)} className={`border ${selected === addr.id ? 'border-[#1CEA87] text-[#1CEA87]' : 'border-[#7B7B7B] text-[#7B7B7B]'} h-10  p-2 mx-2 mb-2 rounded text-center`}>
+                    return (<div onClick={()=>setSelected(addr.id)} className={`border ${selected === addr.id ? 'border-[#1CEA87] text-[#1CEA87]' : 'border-[#24262D] text-[#7B7B7B]'} h-10  p-2 mb-2 rounded text-center`}>
                         {addr.title}
                     </div>)
                 })}
-                <div className='border border-[#7B7B7B] text-[#7B7B7B] h-10 p-2 m-2 rounded text-3xl text-center'>
-                    +
-                </div>
+            <ModalAddress/>
             </div>
             <div
                 className='fixed flex justify-between bottom-0 w-full md:h-14 h-28 border-t border-[#7B7B7B] rounded-t-lg bg-[#33363F]'>

@@ -12,10 +12,12 @@ export default function Checkout() {
     const navigate = useNavigate()
 
     const handleSubmit = () => {
-        access ? navigate('/select-address') : navigate('/login')
+        if (items){
+            access ? navigate('/select-address') : navigate('/login')
+        }
     }
     useEffect(() => {
-        dispatch(getCheckoutAction())
+        access && dispatch(getCheckoutAction())
         console.log(items)
     }, [dispatch])
     return (

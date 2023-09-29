@@ -17,8 +17,8 @@ export default function ModalAddress() {
 
     return (
         <>
-            <div className='h-10 p-2 bg-[#24262D] rounded text-[#7B7B7B] text-right' onClick={() => setShowModal(true)}>
-                افزودن آدرس
+            <div className='border border-[#24262D] h-10 p-1 rounded text-3xl text-[#7B7B7B] text-center' onClick={() => setShowModal(true)}>
+                +
             </div>
 
             {showModal ? (
