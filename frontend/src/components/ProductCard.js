@@ -5,7 +5,7 @@ import {getProductAction} from "../redux/shop/action";
 import {useDispatch} from "react-redux";
 
 
-export default function ProductCard({title, img, price, slug}) {
+export default function ProductCard({id, title, img, price, slug}) {
     const dispatch = useDispatch()
 
     const navigate = useNavigate();
@@ -30,7 +30,7 @@ export default function ProductCard({title, img, price, slug}) {
                     <div className='pr-2'>تومان</div>
 
                 </div>
-                <Modal/>
+                <Modal id={id} title={title} price={price}/>
                 </div>
             </div>
         </div>

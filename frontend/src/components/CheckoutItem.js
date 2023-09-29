@@ -4,7 +4,7 @@ import {getProductAction} from "../redux/shop/action";
 import {useDispatch} from "react-redux";
 
 
-export default function CheckoutItem({title, price, slug}) {
+export default function CheckoutItem({title, price, slug, count, unit}) {
     const dispatch = useDispatch()
     const navigate = useNavigate();
 
@@ -26,6 +26,9 @@ export default function CheckoutItem({title, price, slug}) {
                     <div className='flex pr-2 pt-1 text-red-500'>
                         <div>{price}</div>
                         <div className='px-2'>تومان</div>
+                    </div>
+                    <div className='text-red-500 text-center flex p-1 px-2'>
+                        {count} X
                     </div>
                 </div>
             </div>

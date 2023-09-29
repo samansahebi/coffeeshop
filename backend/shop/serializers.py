@@ -21,7 +21,7 @@ class ProductUnitSerializer(serializers.ModelSerializer):
 
 
 class ProductSerializer(serializers.ModelSerializer):
-    unit = ProductUnitSerializer()
+    unit = ProductUnitSerializer(many=True)
 
     class Meta:
         model = Product

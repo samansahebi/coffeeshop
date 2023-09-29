@@ -1,8 +1,11 @@
 import React from "react";
 import { FaFilter } from "react-icons/fa6";
+import {useSelector} from "react-redux";
 
 export default function ModalAddress() {
   const [showModal, setShowModal] = React.useState(false);
+  const {categories} = useSelector(({shop}) => shop)
+
   return (
     <>
             <div onClick={() => setShowModal(true)}>
@@ -34,7 +37,7 @@ export default function ModalAddress() {
                 {/*body*/}
                 <div className="relative p-2 flex-auto">
                 <select className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
-                <option name="province">دسته بندی</option>
+                    {categories && categories.map((cat, i)=><option name="productUnit" key={i}>{cat.title}</option>) }
                 </select>
                 <div className="text-white text-right p-2">
                   محدوده قیمت

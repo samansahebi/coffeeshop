@@ -1,12 +1,35 @@
-import React from "react";
+import React, {useEffect} from "react";
 import {FaPlus} from "react-icons/fa6";
+import {useDispatch, useSelector} from "react-redux";
+import {getProductUnitListAction} from "../redux/shop/action";
+import {addItemAction, addToCheckoutAction, getPackageTypesAction} from "../redux/orders/action";
 
-export default function Modal() {
+export default function Modal({id, title, price}) {
   const [showModal, setShowModal] = React.useState(false);
+  const [count, setCount] = React.useState();
+      const {productUnits} = useSelector(({shop}) => shop)
+      const {packages} = useSelector(({orders}) => orders)
+      const {checkout} = useSelector(({orders}) => orders)
+    const dispatch = useDispatch()
+    // const navigate = useNavigate()
+
+    const handleSubmit = () => {
+          count && dispatch(addItemAction({title, count, product: id, unit: 1, package_type: 1, price: price * count}))
+    }
+
+    useEffect(()=>{
+        dispatch(getProductUnitListAction())
+        dispatch(getPackageTypesAction())
+        console.log(productUnits)
+    }, [dispatch])
+
+    useEffect(()=>{
+        setShowModal(false)
+    }, [checkout])
   return (
     <>
-                    <button className="w-8 h-8 p-2 bg-[#1CEA87] rounded-lg" onClick={() => setShowModal(true)}>
-                    <FaPlus/>
+                    <button className="w-8 h-8 p-2 rounded-lg" onClick={() => setShowModal(true)}>
+                    <FaPlus color={'7B7B7B'}/>
                 </button>
 
       {showModal ? (
@@ -34,12 +57,19 @@ export default function Modal() {
                 {/*body*/}
                 <div className="relative p-2 flex-auto">
                 <select className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
-                <option name="province">حجم بسته بندی</option>
+                    {productUnits && productUnits.map((productUnit, i)=><option name="productUnit" key={i}>{productUnit.title}</option>) }
+                </select>
+                <select className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
+                    {packages && packages.map((pack, i)=><option name="productUnit" key={i}>{pack.title}</option>) }
                 </select>
 
-                <input type="textarea" className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='تعداد'/>
+                <input type="textarea" value={count} onChange={(e)=>setCount(e.target.value)} className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]' placeholder='تعداد'/>
 
+                    <div>
+                        <div className='text-red-500 text-center'> مجموع قیمت: {parseInt(price ? price : 0) * parseInt(count ? count : 0)} </div>
+                    </div>
                 </div>
+
                 {/*footer*/}
                 <div className="flex items-center justify-end p-2 border-t border-solid border-slate-200 rounded-b">
                   <button
@@ -52,7 +82,7 @@ export default function Modal() {
                   <button
                     className="bg-[#1CEA87] text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                     type="button"
-                    onClick={() => setShowModal(false)}
+                    onClick={handleSubmit}
                   >
                     افزودن به سبد
                   </button>

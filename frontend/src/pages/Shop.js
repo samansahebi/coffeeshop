@@ -27,9 +27,10 @@ export default function Shop() {
                 {shop.data?.map((product, i)=>(
                         <ProductCard
                             key={i}
+                            id={product.id}
                             title={product.title}
                             img={`${process.env.REACT_APP_HOST}${product.image}`}
-                            price={product.unit.price_per_unit}
+                            price={product.unit[0].price_per_unit}
                             slug={product.slug}
                         />
                     )

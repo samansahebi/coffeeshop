@@ -1,20 +1,16 @@
 from rest_framework import serializers
-from .models import Order, OrderItem
-
-
-class OrderItemSerializer(serializers.ModelSerializer):
-    title = serializers.ReadOnlyField(source='product.title', read_only=True)
-    slug = serializers.ReadOnlyField(source='product.slug', read_only=True)
-    price = serializers.ReadOnlyField(source='product.unit.price_per_unit', read_only=True)
-
-    class Meta:
-        model = OrderItem
-        fields = '__all__'
+from .models import Order, PackageType
 
 
 class OrderSerializer(serializers.ModelSerializer):
-    items = OrderItemSerializer(many=True)
 
     class Meta:
         model = Order
+        fields = '__all__'
+
+
+class PackageTypeSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = PackageType
         fields = '__all__'

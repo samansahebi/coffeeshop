@@ -22,6 +22,20 @@ class ProductUnit(models.Model):
         return self.title
 
 
+class OfferCode(models.Model):
+    CHOICES = (
+        ('Price', 'Price'),
+        ('Percentage', 'Percentage'),
+    )
+    is_public = models.BooleanField(default=False)
+    code = models.CharField(_('code'), max_length=200)
+    offer = models.IntegerField(_('offer'))
+    type = models.CharField(_('type'), default='Percentage', max_length=200)
+
+    def __str__(self):
+        return self.code
+
+
 class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name=_('category'), on_delete=models.PROTECT)
     provider = models.ForeignKey(Provider, verbose_name=_('provider'), on_delete=models.PROTECT)
@@ -29,12 +43,12 @@ class Product(models.Model):
     description = models.TextField(_('description'))
     image = models.ImageField(_('image'))
     slug = models.SlugField(_('slug'))
-    unit = models.ForeignKey(ProductUnit, verbose_name=_('unit'), on_delete=models.PROTECT)
+    unit = models.ManyToManyField(ProductUnit, verbose_name=_('unit'))
+    offer_code = models.ForeignKey(OfferCode, on_delete=models.CASCADE, blank=True, null=True)
+    count_in_store = models.IntegerField(default=1)
+    is_active = models.BooleanField(default=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return self.title
-
-
-class Store(models.Model):
-    product = models.ForeignKey(Product, verbose_name=_('product'), on_delete=models.PROTECT)
-    available = models.PositiveBigIntegerField()

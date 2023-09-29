@@ -32,7 +32,8 @@ class ListProductUnit(APIView):
     serializer_class = ProductUnitSerializer
 
     def get(self, request):
-        pass
+        serializer = self.serializer_class(self.queryset.all(), many=True)
+        return Response(serializer.data)
 
 
 class ListCategory(APIView):

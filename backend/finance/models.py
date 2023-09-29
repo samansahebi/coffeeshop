@@ -4,9 +4,15 @@ from shop.models import Product, ProductUnit
 from customers.models import Customer, Address
 
 
+class PackageType(models.Model):
+    title = models.CharField(_('title'), max_length=50)
+
+
 class OrderItem(models.Model):
-    product = models.ForeignKey(Product, verbose_name=_('product'), on_delete=models.PROTECT)
-    count = models.IntegerField(verbose_name=_('count'))
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    unit = models.ForeignKey(ProductUnit, on_delete=models.PROTECT)
+    package_type = models.ForeignKey(PackageType, verbose_name=_('package type'), on_delete=models.PROTECT, null=True, blank=True)
+    count = models.IntegerField()
 
 
 class Order(models.Model):
@@ -17,10 +23,11 @@ class Order(models.Model):
         ('TransferPending', 'TransferPending'),
         ('Delivered', 'Delivered'),
     )
+
     items = models.ManyToManyField(OrderItem)
     customer = models.ForeignKey(Customer, verbose_name=_('customer'), on_delete=models.PROTECT)
     address = models.ForeignKey(Address, verbose_name=_('address'), on_delete=models.PROTECT)
-    description = models.CharField(_('description'), max_length=200, null=True, blank=True)
+    description = models.TextField(_('description'), null=True, blank=True)
     status = models.CharField(_('status'), max_length=30, choices=CHOICES, default='Checkout')
     total_price = models.CharField(_('total price'), max_length=30)
     date_created = models.DateTimeField(verbose_name=_('date created'), auto_now_add=True)
