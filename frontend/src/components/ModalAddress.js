@@ -4,14 +4,15 @@ import {getProductListAction} from "../redux/shop/action";
 import {getCitiesAction, getProvincesAction} from "../redux/authentication/action";
 
 export default function ModalAddress() {
+    const [selectedProvince, setSelectedProvince] = React.useState(8);
+    const [selectedCities, setSelectedCities] = React.useState([]);
     const [showModal, setShowModal] = React.useState(false);
-    const auth = useSelector(({authentication}) => authentication)
+    const {cities, provinces} = useSelector(({authentication}) => authentication)
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(getProvincesAction())
         dispatch(getCitiesAction())
-        console.log(auth)
     }, [dispatch])
 
     return (
@@ -50,13 +51,23 @@ export default function ModalAddress() {
                                     <input type="textarea"
                                            className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'
                                            placeholder='عنوان آدرس'/>
-                                    <select
+                                    <select defaultValue={'تهران'}
+                                            onChange={(e)=> {
+                                                setSelectedProvince(provinces?.find(prov => prov.title === e.target.value).id)
+                                                setSelectedCities(cities?.filter(city => city.province === selectedProvince))
+                                                console.log(selectedProvince)
+                                                console.log(selectedCities)
+                                            }}
                                         className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
-                                        <option name="province">استان</option>
+                                        {provinces && provinces.sort((a, b)=> {
+                                            return a.id - b.id
+                                        }).map((province, i)=><option name="province" key={i}>{province.title}</option>) }
                                     </select>
                                     <select
                                         className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
-                                        <option name="province">شهر</option>
+                                        {cities && cities.filter(city => city.province === selectedProvince).sort((a, b)=> {
+                                            return a.id - b.id
+                                        }).map((city, i)=><option name="city" key={i}>{city.title}</option>) }
                                     </select>
                                     <input type="textarea"
                                            className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'

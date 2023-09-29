@@ -20,13 +20,13 @@ export default createReducer({
         return {...state,error: false, loading: true}
     },
     [SET_PROVINCES]: (state, payload) => {
-        return {...state,error: false, loading: false, ...payload.res}
+        return {...state,error: false, loading: false, provinces: payload.res}
     },
     [GET_CITIES]: (state) => {
         return {...state,error: false, loading: true}
     },
     [SET_CITIES]: (state, payload) => {
-        return {...state,error: false, loading: false, ...payload.res}
+        return {...state,error: false, loading: false, cities: payload.res}
     },
     [SEND_OTP]: (state, payload) => {
         return {...state,error: false, loading: false, ...payload.res}
