@@ -3,6 +3,8 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {useNavigate} from "react-router-dom";
 import {getProfileAction} from "../redux/authentication/action";
+import {FaTrashCan} from "react-icons/fa6";
+import {FaPenToSquare} from "react-icons/fa6";
 
 export default function Info() {
 
@@ -33,14 +35,20 @@ export default function Info() {
                 <input className='border border-[#24262D] bg-transparent p-2 rounded w-full text-right outline-none text-[#7B7B7B]'
                        value={last_name}
                        placeholder='نام خانوادگی'/>
-                <input className='border border-[#24262D] bg-transparent p-2 rounded w-full text-left outline-none text-[#7B7B7B]'
+                <input className='border border-[#24262D] bg-transparent p-2 rounded w-full text-right outline-none text-[#7B7B7B]'
                        value={phone_number}
                        placeholder='شماره موبایل'/>
-                <input className='border border-[#24262D] bg-transparent p-2 rounded w-full text-left outline-none text-[#7B7B7B]'
+                <input className='border border-[#24262D] bg-transparent p-2 rounded w-full text-right outline-none text-[#7B7B7B]'
                        value={email}
                        placeholder='ایمیل'/>
                 <div className={'text-white text-center'}>آدرس ها</div>
-                {address?.map((addr)=> {return(<div className={'border border-[#24262D] rounded p-2 text-[#7B7B7B] text-center'}>{addr.title}</div>)})}
+                {address?.map((addr)=> {return(
+                    <div className='flex flex-row-reverse w-full'>
+                        <div className='border border-[#24262D] rounded-l p-3'><FaTrashCan size={20} color={'7B7B7B'}/></div>
+                        <div className='border border-[#24262D] p-3'><FaPenToSquare size={20} color={'7B7B7B'}/></div>
+                        <div className={'border border-[#24262D] w-full rounded-r p-2 text-[#7B7B7B] text-center'}>{addr.title}</div>
+                    </div>)}
+                    )}
                 <ModalAddress/>
             </div>
             <div className='fixed bottom-16 md:bottom-2 flex items-end w-full'>
