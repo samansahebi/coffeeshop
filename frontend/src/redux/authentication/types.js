@@ -7,5 +7,6 @@ export const GET_CITIES = 'GET_CITIES';
 export const SET_CITIES = 'SET_CITIES';
 export const GET_PROVINCES = 'GET_PROVINCES';
 export const SET_PROVINCES = 'SET_PROVINCES';
+export const CREATE_ADDRESS = 'CREATE_ADDRESS';
 export const SEND_OTP = 'SEND_OTP';
 export const SET_ERROR = 'SET_ERROR';

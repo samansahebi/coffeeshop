@@ -1,11 +1,19 @@
 import {GET_TOKEN, SET_TOKEN, SET_ERROR, LOGOUT, SEND_OTP, GET_PROFILE, GET_PROVINCES, SET_PROVINCES, GET_CITIES,
-    SET_CITIES} from './types';
-import {loginApi, logoutApi, refreshTokenApi, sendOtpApi, getProfileApi, getProvinceApi, getCityApi} from "../../services/authorization";
+    SET_CITIES, CREATE_ADDRESS} from './types';
+import {loginApi, logoutApi, refreshTokenApi, createAddressApi, sendOtpApi, getProfileApi, getProvinceApi, getCityApi} from "../../services/authorization";
 
 export const getProfileAction = (props) => {
     return (dispatch) => {
         return getProfileApi(props).then(
             res => res ? dispatch({type: GET_PROFILE, res}) : dispatch({type: SET_ERROR})
+        );
+    }
+};
+
+export const createAddressAction = (props) => {
+    return (dispatch) => {
+        return createAddressApi(props).then(
+            res => res ? dispatch({type: CREATE_ADDRESS, res}) : dispatch({type: SET_ERROR})
         );
     }
 };

@@ -13,3 +13,5 @@ export const refreshTokenApi = (data) => Api.POST({url: "users/refresh", isRef: 
 export const getProvinceApi = (data) => Api.GET({url: "customers/get-provinces", data});
 
 export const getCityApi = (data) => Api.GET({url: "customers/get-cities", data});
+
+export const createAddressApi = (data) => Api.POST({url: "customers/create-address", data});

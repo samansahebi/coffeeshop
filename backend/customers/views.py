@@ -69,4 +69,5 @@ class CreateAddress(APIView):
         serializer = self.serializer_classes(data=request.data)
         serializer.is_valid(raise_exception=True)
         serializer.save()
+        request.user.customer.address.add(serializer.data.get('id'))
         return Response(serializer.data, status=status.HTTP_201_CREATED)

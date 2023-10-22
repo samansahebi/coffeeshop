@@ -1,14 +1,28 @@
 import React, {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {getProductListAction} from "../redux/shop/action";
-import {getCitiesAction, getProvincesAction} from "../redux/authentication/action";
+import {createAddressAction, getCitiesAction, getProvincesAction} from "../redux/authentication/action";
 
 export default function ModalAddress() {
+    const [title, setTitle] = React.useState('');
     const [selectedProvince, setSelectedProvince] = React.useState(8);
-    const [selectedCities, setSelectedCities] = React.useState([]);
+    const [selectedCity, setSelectedCity] = React.useState();
+    const [address, setAddress] = React.useState();
+    const [postalCode, setPostalCode] = React.useState();
     const [showModal, setShowModal] = React.useState(false);
     const {cities, provinces} = useSelector(({authentication}) => authentication)
     const dispatch = useDispatch()
+
+    const handleSubmit = () => {
+        dispatch(createAddressAction({
+            title: title,
+            province: selectedProvince,
+            city: selectedCity,
+            address: address,
+            postal_code: postalCode,
+        }))
+        setShowModal(false)
+    }
 
     useEffect(() => {
         dispatch(getProvincesAction())
@@ -50,13 +64,17 @@ export default function ModalAddress() {
                                 <div className="relative p-2 flex-auto">
                                     <input type="textarea"
                                            className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'
+                                           onChange={(e)=>setTitle(e.target.value)}
                                            placeholder='عنوان آدرس'/>
                                     <select defaultValue={'تهران'}
                                             onChange={(e)=> {
                                                 setSelectedProvince(provinces?.find(prov => prov.title === e.target.value).id)
-                                                setSelectedCities(cities?.filter(city => city.province === selectedProvince))
-                                                console.log(selectedProvince)
-                                                console.log(selectedCities)
+                                                setSelectedCity(cities.filter(city => city.province === selectedProvince).sort((a, b)=> {
+                                            return a.id - b.id
+                                        })[0].id)
+                                                // setSelectedCities(cities?.filter(city => city.province === selectedProvince))
+                                                // console.log(selectedProvince)
+                                                // console.log(selectedCities)
                                             }}
                                         className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
                                         {provinces && provinces.sort((a, b)=> {
@@ -64,6 +82,7 @@ export default function ModalAddress() {
                                         }).map((province, i)=><option name="province" key={i}>{province.title}</option>) }
                                     </select>
                                     <select
+                                        onChange={(e)=>setSelectedCity(cities.find(x=> x.title === e.target.value).id)}
                                         className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'>
                                         {cities && cities.filter(city => city.province === selectedProvince).sort((a, b)=> {
                                             return a.id - b.id
@@ -71,9 +90,11 @@ export default function ModalAddress() {
                                     </select>
                                     <input type="textarea"
                                            className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'
+                                           onChange={(e)=>setAddress(e.target.value)}
                                            placeholder='آدرس'/>
                                     <input
                                         className='bg-[#24262D] p-2 mb-2 rounded w-full text-right outline-none text-[#7B7B7B]'
+                                        onChange={(e)=>setPostalCode(e.target.value)}
                                         placeholder='کدپستی'/>
                                 </div>
                                 {/*footer*/}
@@ -89,7 +110,7 @@ export default function ModalAddress() {
                                     <button
                                         className="bg-[#1CEA87] text-black active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded-md shadow hover:shadow-lg outline-none focus:outline-none mr-1 ease-linear transition-all duration-150"
                                         type="button"
-                                        onClick={() => setShowModal(false)}
+                                        onClick={handleSubmit}
                                     >
                                         افزودن آدرس
                                     </button>
@@ -97,7 +118,7 @@ export default function ModalAddress() {
                             </div>
                         </div>
                     </div>
-                    <div className="opacity-25 fixed inset-0 z-40 bg-black"></div>
+                    {/*<div className="opacity-25 fixed inset-0 z-40 bg-black"></div>*/}
                 </>
             ) : null}
         </>
